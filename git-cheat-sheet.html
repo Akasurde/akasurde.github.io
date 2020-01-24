@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="/theme/stylesheet/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/stylesheet/font-awesome.min.css">
+
+
+
+
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+<meta name="author" content="Abhijeet Kasurde" />
+<meta name="description" content="Git - Cheatsheet" />
+<meta name="keywords" content="git">
+<meta property="og:site_name" content="http://akasurde.github.io"/>
+<meta property="og:title" content="Git - Cheatsheet"/>
+<meta property="og:description" content="Git - Cheatsheet"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="/git-cheat-sheet.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2016-03-11 12:03:00+05:30"/>
+<meta property="article:modified_time" content="2016-03-11 12:03:00+05:30"/>
+<meta property="article:author" content="/author/abhijeet-kasurde.html">
+<meta property="article:section" content="git"/>
+<meta property="article:tag" content="git"/>
+<meta property="og:image" content="https://pbs.twimg.com/profile_images/598341193336954882/HHxz7Y7G.png">
+  <title>http://akasurde.github.io &ndash; Git - Cheatsheet</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="">
+        <img src="https://pbs.twimg.com/profile_images/598341193336954882/HHxz7Y7G.png" alt="Abhijeet Kasurde" title="Abhijeet Kasurde">
+      </a>
+      <h1><a href="">Abhijeet Kasurde</a></h1>
+      <p>Developer, Hacker</p>
+      <nav>
+        <ul class="list">
+          <li><a href="https://akasurde.github.io">Home</a></li>
+          <li><a href="/pages/about.html#about">About</a></li>
+          <li><a href="/pages/contact.html#contact">Contact</a></li>
+          <li><a href="/pages/good-reads.html#good-reads">Good Reads</a></li>
+          <li><a href="/pages/open-source-for-you.html#open-source-for-you">Open Source For You</a></li>
+          <li><a href="/pages/projects.html#projects">Projects</a></li>
+          <li><a href="/pages/slidedecks.html#slidedecks">Slide Deck</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/akasurde" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/Pyro46" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/abhijeet-kasurde-baab8519" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-stack-overflow" href="http://stackoverflow.com/users/1075324/abhijeet-kasurde" target="_blank"><i class="fa fa-stack-overflow"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+
+<article>
+  <header>
+    <h1 id="git-cheat-sheet">Git - Cheatsheet</h1>
+    <p>Posted on Fri 11 March 2016 in <a href="/category/git.html">git</a></p>
+  </header>
+  <div>
+    <ul>
+<li>
+<p>Initialize bare repository</p>
+<p><pre>$ git init .</pre></p>
+</li>
+<li>
+<p>Amending the commit message which is not pushed</p>
+<p><pre>$ git commit --amend</pre></p>
+</li>
+<li>
+<p>Force push amended commit message to a remote branch</p>
+<p><pre>$ git push remote_name branch_name -f</pre></p>
+</li>
+<li>
+<p>Undo git add to files staged for git commit</p>
+<p><pre>$ git reset HEAD file_name </pre> or
+<pre>$ git rm --cached file_name </pre></p>
+<p><strong>Usage</strong>: <code>git reset HEAD a.sh</code> or <code>git rm --cached a.sh</code></p>
+<p>This command will remove a file named a.sh from the current index, the "about to be committed" area, without changing anything else.</p>
+</li>
+<li>
+<p>Diff files which are under staging</p>
+<p><pre>$ git diff --staged </pre></p>
+</li>
+<li>
+<p>Diff between two commits</p>
+<p><pre>$ git diff commit_1 commit_2</pre></p>
+</li>
+<li>
+<p>Diff between two branches</p>
+<p><pre>$ git diff branch_1 branch_2</pre></p>
+</li>
+<li>
+<p>Push Local branch to central git repository</p>
+<p><pre>$ git push remote_name branch_name</pre></p>
+</li>
+<li>
+<p>Create patch using git format-patch</p>
+<p><pre>$ git format-patch master --stdout &gt; fix_empty_poster.patch </pre></p>
+</li>
+<li>
+<p>View first 3 commit messages in git log</p>
+<p><pre>$ git log --pretty=oneline -3 </pre></p>
+</li>
+<li>
+<p>Adding signed-off in commit message</p>
+<p><pre>$ git commit -s -m "commit_message" </pre></p>
+</li>
+<li>
+<p>Using pull without unwanted merge commits</p>
+<p><pre>$ git pull --rebase </pre></p>
+</li>
+<li>
+<p>Deleting last commit in local repository</p>
+<p><pre>$ git reset HEAD^ --hard </pre></p>
+</li>
+<li>
+<p>Deleting last commit from remote repository</p>
+<p><pre>$ git reset HEAD^ --hard </pre>
+<pre>$ git push origin master -f </pre></p>
+</li>
+<li>
+<p>Revert git pull</p>
+<p><pre>$ git reset --hard </pre></p>
+</li>
+<li>
+<p>Diff between lastest commit and last commit</p>
+<p><pre>$ git diff HEAD^ HEAD</pre></p>
+</li>
+</ul>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/git.html">git</a>
+    </p>
+  </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'akasurdegithubio';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</article>
+
+    <footer>
+<p>
+  &copy; Abhijeet Kasurde 2020 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+         src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-76778737-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "Git - Cheatsheet",
+  "headline": "Git - Cheatsheet",
+  "datePublished": "2016-03-11 12:03:00+05:30",
+  "dateModified": "2016-03-11 12:03:00+05:30",
+  "author": {
+    "@type": "Person",
+    "name": "Abhijeet Kasurde",
+    "url": "/author/abhijeet-kasurde.html"
+  },
+  "image": "https://pbs.twimg.com/profile_images/598341193336954882/HHxz7Y7G.png",
+  "url": "/git-cheat-sheet.html",
+  "description": "Git - Cheatsheet"
+}
+</script></body>
+</html>

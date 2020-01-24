@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="/theme/stylesheet/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/stylesheet/font-awesome.min.css">
+
+
+
+
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+<meta name="author" content="Abhijeet Kasurde" />
+<meta name="description" content="Using Ansible to retrieve information about VMware objects" />
+<meta name="keywords" content="vmware, ansible, automation, command line">
+<meta property="og:site_name" content="http://akasurde.github.io"/>
+<meta property="og:title" content="VMware Core Info"/>
+<meta property="og:description" content="Using Ansible to retrieve information about VMware objects"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="/vmware-core-info.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2020-01-10 12:03:00+05:30"/>
+<meta property="article:modified_time" content="2016-01-10 12:03:00+05:30"/>
+<meta property="article:author" content="/author/abhijeet-kasurde.html">
+<meta property="article:section" content="vmware"/>
+<meta property="article:tag" content="vmware"/>
+<meta property="article:tag" content="ansible"/>
+<meta property="article:tag" content="automation"/>
+<meta property="article:tag" content="command line"/>
+<meta property="og:image" content="https://pbs.twimg.com/profile_images/598341193336954882/HHxz7Y7G.png">
+  <title>http://akasurde.github.io &ndash; VMware Core Info</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="">
+        <img src="https://pbs.twimg.com/profile_images/598341193336954882/HHxz7Y7G.png" alt="Abhijeet Kasurde" title="Abhijeet Kasurde">
+      </a>
+      <h1><a href="">Abhijeet Kasurde</a></h1>
+      <p>Developer, Hacker</p>
+      <nav>
+        <ul class="list">
+          <li><a href="https://akasurde.github.io">Home</a></li>
+          <li><a href="/pages/about.html#about">About</a></li>
+          <li><a href="/pages/contact.html#contact">Contact</a></li>
+          <li><a href="/pages/good-reads.html#good-reads">Good Reads</a></li>
+          <li><a href="/pages/open-source-for-you.html#open-source-for-you">Open Source For You</a></li>
+          <li><a href="/pages/projects.html#projects">Projects</a></li>
+          <li><a href="/pages/slidedecks.html#slidedecks">Slide Deck</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/akasurde" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/Pyro46" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/abhijeet-kasurde-baab8519" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-stack-overflow" href="http://stackoverflow.com/users/1075324/abhijeet-kasurde" target="_blank"><i class="fa fa-stack-overflow"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+
+<article>
+  <header>
+    <h1 id="vmware-core-info">VMware Core Info</h1>
+    <p>Posted on Fri 10 January 2020 in <a href="/category/vmware.html">vmware</a></p>
+  </header>
+  <div>
+    <p>User can retrieve information about various VMware objects using Ansible. VMware has recently added REST APIs to communicate with vSphere. Ansible uses these APIs to perform automation related to VMware. In this article, we will be discussing <code>vmware_core_info</code> Ansible module, which allows user to retrieve information about VMware object.</p>
+<h2>main.yml</h2>
+<div class="highlight"><pre><span></span><span class="o">---</span>
+<span class="o">-</span> <span class="nv">hosts</span>: <span class="nv">all</span>
+  <span class="nv">gather_facts</span>: <span class="nv">no</span>
+  <span class="nv">connection</span>: <span class="nv">httpapi</span>
+  <span class="nv">vars</span>:
+    <span class="nv">datacenter_name</span>: <span class="nv">Asia</span><span class="o">-</span><span class="nv">Datacenter1</span>
+  <span class="nv">vars_files</span>:
+    <span class="o">-</span> <span class="nv">vcenter_vars</span>.<span class="nv">yml</span>
+  <span class="nv">tasks</span>:
+  <span class="o">-</span> <span class="nv">name</span>: <span class="nv">Get</span> <span class="nv">all</span> <span class="nv">Datacenter</span>
+    <span class="nv">vmware_core_info</span>:
+      <span class="nv">object_type</span>: <span class="nv">datacenter</span>
+    <span class="nv">register</span>: <span class="nv">all_dcs</span>
+
+  <span class="o">-</span> <span class="nv">name</span>: <span class="nv">Get</span> <span class="nv">managed</span> <span class="nv">object</span> <span class="nv">id</span> <span class="k">for</span> <span class="nv">datacenter</span>
+    <span class="nv">set_fact</span>:
+      <span class="nv">datacenter_managed_object_id</span>: <span class="s2">&quot;</span><span class="s">{{ item.datacenter }}</span><span class="s2">&quot;</span>
+    <span class="k">loop</span>: <span class="s2">&quot;</span><span class="s">{{ all_dcs.datacenter.value | json_query(dc_query) }}</span><span class="s2">&quot;</span>
+    <span class="nv">vars</span>:
+      <span class="nv">dc_query</span>: <span class="s2">&quot;</span><span class="s">[?name == `{{ datacenter_name }}` ]</span><span class="s2">&quot;</span>
+
+  <span class="o">-</span> <span class="nv">name</span>: <span class="nv">Display</span> <span class="nv">MoID</span> <span class="k">for</span> <span class="nv">datacenter</span>
+    <span class="nv">debug</span>:
+      <span class="nv">msg</span>: <span class="s2">&quot;</span><span class="s">{{ datacenter_managed_object_id }}</span><span class="s2">&quot;</span>
+
+  <span class="o">-</span> <span class="nv">name</span>: <span class="nv">Get</span> <span class="nv">all</span> <span class="nv">ESXi</span> <span class="nv">information</span>
+    <span class="nv">vmware_core_info</span>:
+      <span class="nv">object_type</span>: <span class="nv">host</span>
+      <span class="nv">filters</span>:
+        <span class="o">-</span> <span class="nv">datacenters</span>: <span class="s2">&quot;</span><span class="s">{{ datacenter_managed_object_id }}</span><span class="s2">&quot;</span>
+    <span class="nv">register</span>: <span class="nv">esxi_list</span>
+</pre></div>
+
+
+<p>here, we are using Ansible VMware httpapi plugin to connect to vSphere REST API. You can read more about Ansible httpapi plugin <a href="https://docs.ansible.com/ansible/latest/plugins/httpapi.html">here</a></p>
+<p>Using VMware httpapi connection plugin, we are first retrieving datacenter managed object for the given datacenter i.e. "Asia-Datacenter1". Once we have that, we use this value to filter ESXi hostsystems in the given VMware infrastructure.</p>
+<p>You can find about vmware_core_info all options and details <a href="https://docs.ansible.com/ansible/devel/modules/vmware_core_info_module.html">here</a></p>
+<p>You can get all code <a href="">here</a></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/vmware.html">vmware</a>
+      <a href="/tag/ansible.html">ansible</a>
+      <a href="/tag/automation.html">automation</a>
+      <a href="/tag/command-line.html">command line</a>
+    </p>
+  </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'akasurdegithubio';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</article>
+
+    <footer>
+<p>
+  &copy; Abhijeet Kasurde 2020 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+         src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-76778737-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "VMware Core Info",
+  "headline": "VMware Core Info",
+  "datePublished": "2020-01-10 12:03:00+05:30",
+  "dateModified": "2016-01-10 12:03:00+05:30",
+  "author": {
+    "@type": "Person",
+    "name": "Abhijeet Kasurde",
+    "url": "/author/abhijeet-kasurde.html"
+  },
+  "image": "https://pbs.twimg.com/profile_images/598341193336954882/HHxz7Y7G.png",
+  "url": "/vmware-core-info.html",
+  "description": "Using Ansible to retrieve information about VMware objects"
+}
+</script></body>
+</html>

@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="/theme/stylesheet/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/stylesheet/font-awesome.min.css">
+
+
+
+
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+<meta name="author" content="Abhijeet Kasurde" />
+<meta name="description" content="The missing manual - mod-nss" />
+<meta name="keywords" content="mod-nss">
+<meta property="og:site_name" content="http://akasurde.github.io"/>
+<meta property="og:title" content="The missing manual - mod-nss"/>
+<meta property="og:description" content="The missing manual - mod-nss"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="/mod-nss-the-missing-manual.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2017-01-13 12:03:00+05:30"/>
+<meta property="article:modified_time" content="2017-01-13 12:03:00+05:30"/>
+<meta property="article:author" content="/author/abhijeet-kasurde.html">
+<meta property="article:section" content="mod-nss"/>
+<meta property="article:tag" content="mod-nss"/>
+<meta property="og:image" content="https://pbs.twimg.com/profile_images/598341193336954882/HHxz7Y7G.png">
+  <title>http://akasurde.github.io &ndash; The missing manual - mod-nss</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="">
+        <img src="https://pbs.twimg.com/profile_images/598341193336954882/HHxz7Y7G.png" alt="Abhijeet Kasurde" title="Abhijeet Kasurde">
+      </a>
+      <h1><a href="">Abhijeet Kasurde</a></h1>
+      <p>Developer, Hacker</p>
+      <nav>
+        <ul class="list">
+          <li><a href="https://akasurde.github.io">Home</a></li>
+          <li><a href="/pages/about.html#about">About</a></li>
+          <li><a href="/pages/contact.html#contact">Contact</a></li>
+          <li><a href="/pages/good-reads.html#good-reads">Good Reads</a></li>
+          <li><a href="/pages/open-source-for-you.html#open-source-for-you">Open Source For You</a></li>
+          <li><a href="/pages/projects.html#projects">Projects</a></li>
+          <li><a href="/pages/slidedecks.html#slidedecks">Slide Deck</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/akasurde" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/Pyro46" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/abhijeet-kasurde-baab8519" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-stack-overflow" href="http://stackoverflow.com/users/1075324/abhijeet-kasurde" target="_blank"><i class="fa fa-stack-overflow"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+
+<article>
+  <header>
+    <h1 id="mod-nss-the-missing-manual">The missing manual - mod-nss</h1>
+    <p>Posted on Fri 13 January 2017 in <a href="/category/mod-nss.html">mod-nss</a></p>
+  </header>
+  <div>
+    <h1>mod_nss</h1>
+<h2>Introduction</h2>
+<p>The mod_ssl package was created in April 1998 by Ralf S. Engelschall and was originally derived from the Apache-SSL package developed by Ben Laurie. It is licensed under the Apache 2.0 license.</p>
+<p><strong>mod_nss</strong> is based directly on the mod_ssl package from Apache 2.0.54. It is a conversion from using OpenSSL calls to using NSS calls instead.</p>
+<h2>Building</h2>
+<p>Refer to the README file included with the distribution.</p>
+<p>To build you'll need NSPR 4.4.1 or above and NSS 3.9.2 or above. It may work with earlier versions but these are recommended (or tested). These can be retrieved from <a href="http://www.mozilla.org/">Mozilla</a>. The <code>--with-nspr</code> and <code>--with-nss</code> options require that the package be installed in the same parent directory (e.g. <code>/opt/nspr</code>, <code>/usr/local/nspr</code>, etc). It will look in this parent for include/ and lib/, etc.</p>
+<p>To build with ECC support you need NSPR 4.6.2 or higher and NSS 3.11.2 or higher.</p>
+<p>You will also need the NSS and NSPR directories in your library search path (either /etc/ld.so.conf or LD_LIBRARY_PATH) to link and run the module.</p>
+<p>Run the configure script. The following mod_nss-specific options are available:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--with-nss=[PATH]</td>
+<td>The file system path to the NSS installation. The assumption is that this has the layout of: PATH/lib, PATH/include, etc.</td>
+</tr>
+<tr>
+<td>--with-nss-inc=PATH</td>
+<td>The file system path to the NSS include directory (e.g. /usr/local/include/nss3)</td>
+</tr>
+<tr>
+<td>--with-nss-lib=PATH</td>
+<td>The file system path to the NSS lib directory (e.g. /usr/local/lib)</td>
+</tr>
+<tr>
+<td>--with-nspr=[PATH]</td>
+<td>The file system path of the NSPR installation. The assumption is that this has the layout of: PATH/lib, PATH/include, etc.</td>
+</tr>
+<tr>
+<td>--with-nspr-inc=PATH</td>
+<td>The file system path to the NSPR include directory (e.g. /usr/local/include/nspr4)</td>
+</tr>
+<tr>
+<td>--with-nspr-lib=PATH</td>
+<td>The file system path to the NSPR lib directory (e.g. /usr/local/lib)</td>
+</tr>
+<tr>
+<td>--with-apxs=[PATH]</td>
+<td>The location of the apxs binary of the Apache you want to install the module into.</td>
+</tr>
+<tr>
+<td>--with-apr-config=[PATH]</td>
+<td>The location of apr-config which tells us where the APR include files and libraries are located</td>
+</tr>
+<tr>
+<td>--enable-ecc</td>
+<td>Enable Elliptical Curve Cryptography. Disabled by default.</td>
+</tr>
+</tbody>
+</table>
+<p>If <code>--with-nss</code> or <code>--with-nspr</code> are not passed configure will look for the <code>[nss|nspr]-devel</code> packages and use the libraries with that if found.</p>
+<p>It is strongly recommended that the mozilla.org version be used.</p>
+<p>Build and install those packages somewhere then configure the module with something like:</p>
+<p><pre>
+  % ./configure --with-apxs=/path/to/apxs/ --with-nspr=/path/to/nspr/ --with-nss=/path/to/nss/
+  % gmake</pre></p>
+<p>This will create a sample configuration file nss.conf. By default this is installed during the installation process.</p>
+<h2>Installation</h2>
+<p>The make install target uses apxs to install the module into Apache.</p>
+<p>This automatically copies the mod_nss shared library to the appropriate location and updates Apache's httpd.conf so that the module will be loaded during the next restart.</p>
+<p>It also tries to rename ssl.conf to ssl.conf.old.</p>
+<p>The assumption is that mod_nss is replacing mod_ssl. They can co-exist as long as they are listening on separate ports.</p>
+<p>The mod_nss configuration file, nss.conf, is copied into the Apache configuration directory (as reported by apxs). You may need to make a manual change to httpd.conf to load this file. If you have a Red Hat-style Apache installation with a conf.d just move <code>nss.conf</code> there. It will be automatically loaded. Otherwise you will need to add the following line to <code>httpd.conf</code> (location relative to <code>httpd.conf</code>):</p>
+<div class="highlight"><pre><span></span><span class="k">Include</span> <span class="nv">conf</span><span class="o">/</span><span class="nv">nss</span>.<span class="nv">conf</span>
+</pre></div>
+
+
+<p>This has Apache load the <code>mod_nss</code> configuration file, <code>nss.conf</code>. It is here that you will setup your VirtualServer entries to and configure your SSL servers. If you have a certificate with Subject Alternative Names then you can configure separate VirtualServer entries for eacon one.
+Certificate Generation</p>
+<p>A ksh script, <code>gencert</code>, is included to automatically generate a self-signed CA plus one server certificate. This is fine for testing purposes but it is strongly recommended that a real server certificate be obtained from a real CA before moving a <code>mod_nss</code> server into production. Users should be expected to cancel any request to a secure server signed by an unknown issuer.</p>
+<p><code>gencert</code> takes one argument, the path to the location of the certificate database. A fair amount of output is generated so you can follow what is going on. For the most part most don't need to bother with the details.</p>
+<p>The certificate database password is httptest.</p>
+<p>A sample run is:
+<pre>
+  # mkdir /etc/httpd/nss
+  # ./gencert /etc/httpd/nss</p>
+<p>#####################################################################
+  Generating new server certificate and key database. The password
+  is httptest
+  #####################################################################</p>
+<p>#####################################################################
+  Generating self-signed client CA certificate
+  #####################################################################</p>
+<p>Generating key.  This may take a few moments...</p>
+<p>[ Lots of output removed ]
+</pre></p>
+<p>You should now have the following files:</p>
+<ul>
+<li>/etc/httpd/nss/cert8.db</li>
+<li>/etc/httpd/nss/key3.db</li>
+<li>/etc/httpd/nss/secmod.db</li>
+</ul>
+<p>These 3 files make up an NSS certificate database.</p>
+<p>If you have a sql: prefix on the path, like <code>sql:/etc/httpd/nss</code>, then it will generate an SQLite NSS database consisting of the following files:</p>
+<ul>
+<li>/etc/httpd/nss/cert9.db</li>
+<li>/etc/httpd/nss/key4.db</li>
+<li>/etc/httpd/nss/pkcs11.txt</li>
+</ul>
+<h2>Server Startup</h2>
+<p>Starting a <code>mod_nss</code> server is no different than starting a <code>mod_ssl</code> server. You will need to authenticate yourself to the security token (e.g. enter the key password). The sample <code>nss.conf</code> is not included in an <IfDefine SSL> so you do not need to use the startssl argument with apachectl.</p>
+<p>A sample startup might look like:</p>
+<p><pre> % apachectl start
+  Please enter password for "internal" token:
+  </pre></p>
+<p>If you have additional hardware tokens you will be prompted for each token password.</p>
+<p>All other output will be written to the Apache log files.</p>
+<p>To avoid being prompted for a startup password you can either:</p>
+<ul>
+<li>
+<p>Use a password file that contains your token passwords. See NSSPassPhraseDialog for details.</p>
+</li>
+<li>
+<p>Exec a program which provides the token password (either by asking the user or other means. Change the internal token password to a blank with:</p>
+</li>
+</ul>
+<p><pre> % modutil -dbdir /path/to/database/directory -changepw "NSS Certificate DB" </pre></p>
+<p>Enter the old password then press Enter twice for the new password to blank it out.</p>
+<h2>Migration</h2>
+<p>A perl script, <code>migrate.pl</code>, is included to help migrate an existing <code>mod_ssl</code> configuration to work with <code>mod_nss</code>. There is one optional argument, <code>-c</code>, that will try to convert your existing server and CA certificates plus any certificate revocation lists (CRLs) into an NSS certificate database.</p>
+<p>The migration script assumes that you are migrating from <code>ssl.conf</code> to <code>nss.conf</code>. The original file is not changed. All comments, spacing and other directives are maintained so if there is no ssl.conf it is possible to migrate <code>httpd.conf</code> to use <code>mod_nss</code>. Simply copy <code>httpd.conf</code> to <code>ssl.conf</code>, run the update, then copy <code>nss.conf</code> to <code>httpd.conf</code> (after making a backup, of course). This multi-step process gives you a chance to verify that the migration was successful.</p>
+<h2>Configuration Directives</h2>
+<p>The following mod_ssl Directives are not applicable to mod_nss:</p>
+<ul>
+<li>SSLSessionCache</li>
+<li>SSLMutex</li>
+<li>SSLCertificateChainFile</li>
+<li>SSLCARevocationPath</li>
+<li>SSLCARevocationFile</li>
+<li>SSLVerifyDepth</li>
+<li>SSLCryptoDevice</li>
+</ul>
+<h2>Details</h2>
+<hr>
+<ul>
+<li>NSSPassPhraseDialog</li>
+</ul>
+<p>Authentication is required in order to use the private key in an NSS certificate database. The method of this authentication is specified with the NSSPassPhraseDialog directive. This directive takes one argument specifying the method of authentication:
+  builtin
+  The user will be prompted to enter the token password for each cryptographic device. This works seemlessly with any hardware tokens used. The default "device" is the internal token provided by the NSS Certificate database itself.</p>
+<p><code>file:/path/to/file</code></p>
+<p>The token password(s) may be stored in an ASCII text file which is read during startup so the server can start without user intervention. The format of this file is:</p>
+<p><code>token:password</code></p>
+<p>An example for the internal token is:</p>
+<p><pre>
+  internal:secret12
+  exec:/path/to/executable</pre></p>
+<p>The listed program will be executed. The only argument is the NSS token name to be authenticated. The return value of the program is ignored. Only what is printed on stdout is passed along as the password.</p>
+<p>A trivial example script is:</p>
+<p><pre>
+  #!/bin/sh
+  echo "secret123"
+  </pre></p>
+<p>To prompt using systemd (as root):</p>
+<p><pre>
+  #!/bin/sh
+  exec /bin/systemd-ask-password "Enter SSL pass phrase for $1: "
+  </pre></p>
+<ul>
+<li><em>Example</em></li>
+</ul>
+<p><pre>
+  NSSPassPhraseDialog builtin
+  NSSPassPhraseDialog file:/etc/httpd/alias/password.conf
+  NSSPassPhraseDialog exec:/usr/libexec/httpd/httpd-ssl-pass-dialog</pre></p>
+<hr>
+<ul>
+<li>NSSPassPhraseHelper</li>
+</ul>
+<p>When Apache starts it loads and unloads any modules that aren't built-in twice. It loads them once so it can verify that the configuration is ok and then it unloads them and re-loads them again when the server is actually ready to receive connections. After the first module load Apache closes access to the terminal so there is no way to prompt for the NSS token passwords (it would also be annoying to have to authenticate twice). Because the module is loaded and unloaded the NSS certificate database needs to be loaded and unloaded as well, causing any pins entered during the first load to be lost and causing the server to be unstartable.</p>
+<p>The solution is the PassPhraseHelper. This is a stand-alone program that also opens the NSS certificate database and stores a copy of the encrypted token password entered during the first load of the NSS module. When mod_nss needs to open the certificate database during subsequent reloads it queries the PassPhraseHelper for the token password.</p>
+<p>Example</p>
+<p><pre>NSSPassPhraseHelper /path/to/nss_pcache</pre></p>
+<hr>
+<ul>
+<li>NSSCertificateDatabase</li>
+</ul>
+<p>Specifies the location of the NSS certificate database to be used. An NSS certificate database consists of 3 files: <code>cert8.db</code>, <code>key3.db</code> and <code>secmod.db</code>. <code>cert8.db</code> stores certificates and Certificate Revocation Lists (CRLs), <code>key3.db</code> stores keys and <code>secmod.db</code> stores information about available PKCS#11 modules.</p>
+<p>This directive specifies a path, not a filename. To use a sqlite NSS database include the prefix sql: in the path.</p>
+<p>Example</p>
+<p><pre>NSSCertificateDatabase /etc/httpd/conf/nss
+  NSSCertificateDatabase sql:/etc/httpd/conf/nss</pre></p>
+<hr>
+<ul>
+<li>NSSDBPrefix</li>
+</ul>
+<p>Normally a certificate database consists of 3 files: <code>cert8.db</code>, <code>key3.db</code> and <code>secmod.db</code>. This directive allows you to add a named prefix to the filenames of <code>cert8.db</code> and <code>key3.db</code> so you can store multiple databases in one directory.</p>
+<p>Example</p>
+<p><pre> NSSDBPrefix my-prefix-</pre></p>
+<p>You would then need: <code>my-prefix-cert8.db</code>, <code>my-prefix-key3.db</code> and <code>secmod.db</code></p>
+<p>In order to work with files with a prefix using the NSS command-line tools use the -P flag.</p>
+<hr>
+<ul>
+<li>NSSSessionCacheSize</li>
+</ul>
+<p>Specifies the number of SSL sessions that can be cached.</p>
+<p>There is no upper limit.</p>
+<p>The default value is 10000.</p>
+<p>Example</p>
+<p><pre>NSSSessionCacheSize 10000</pre></p>
+<hr>
+<ul>
+<li>NSSSessionCacheTimeout</li>
+</ul>
+<p>Deprecated.</p>
+<hr>
+<ul>
+<li>NSSSession3CacheTimeout</li>
+</ul>
+<p>Specifies the number of seconds SSLv3 sessions are cached.</p>
+<p>The valid range is 5 - 86400 seconds. A setting outside the valid range is silently constrained.</p>
+<p>The default value is 86400 (24 hours).</p>
+<p>Example</p>
+<p><pre>NSSSession3CacheTimeout 86400</pre></p>
+<hr>
+<ul>
+<li>NSSRandomSeed</li>
+</ul>
+<p>Configures sources to seed the NSS Random Number Generator (RNG) at startup. Currently this only supports seeding the RNG at startup.</p>
+<p>The following sources are available:
+  builtin: Combines the current system time, the current process id and a randomly choosen 128-byte extract of the process stack. This is not a particularly strong source of entropy.
+  file:/path/to/source: Reads from the specified file. If the number of bytes to read is specified it just reads that amount. Be aware that some operating systems block on /dev/random if not enough entropy is available. This means that the server will wait until that data is available to continue startup. These systems generally offer a non-blocking device as well, /dev/urandom.
+  exec:/path/to/program: Executes the given program and takes the stdout of it as the entropy. If the bytes argument is included it reads that many bytes, otherwise it reads until the program exits.</p>
+<p>Example</p>
+<p><pre>NSSRandomSeed startup builtin
+  NSSRandomSeed startup /dev/urandom 512
+  NSSRandomSeed startup /usr/bin/makerandom</pre></p>
+<hr>
+<ul>
+<li>NSSSkipPermissionCheck</li>
+</ul>
+<p>The NSS database will be checked to ensure that the user configured to run Apache as has owner or group read access to the database configured in NSSCertificateDatabase. This check can be disabled by setting NSSSkipPermissionCheck to on. The default is off</p>
+<p>Example</p>
+<p><pre>NSSSkipPermissionCheck on</pre></p>
+<hr>
+<ul>
+<li>NSSEngine</li>
+</ul>
+<p>Enables or disables the SSL protocol. This is usually used within a VirtualHost tag to enable SSL for a particular virtual host.</p>
+<p>SSL is disabled by default.</p>
+<p>Example</p>
+<p><pre>NSSEngine on</pre></p>
+<hr>
+<ul>
+<li>NSSFIPS</li>
+</ul>
+<p>Enables or disables FIPS 140 mode. This replaces the standard internal PKCS#11 module with a FIPS-enabled one. It also forces the enabled protocols to TLSv1.2, TLSv1.1 and TLSv1.0 and disables all ciphers but the FIPS ones. You may still select which ciphers you would like limited to those that are FIPS-certified. Any non-FIPS that are included in the NSSCipherSuite entry are automatically disabled. The allowable ciphers are (with ecc-enabled set):</p>
+<ul>
+<li>rsa_3des_sha</li>
+<li>rsa_aes_128_sha</li>
+<li>rsa_aes_256_sha</li>
+<li>aes_128_sha_256</li>
+<li>aes_256_sha_256</li>
+<li>rsa_aes_128_gcm_sha_256</li>
+<li>fips_3des_sha</li>
+<li>ecdh_ecdsa_3des_sha</li>
+<li>ecdh_ecdsa_aes_128_sha</li>
+<li>ecdh_ecdsa_aes_256_sha</li>
+<li>ecdhe_ecdsa_3des_sha</li>
+<li>ecdhe_ecdsa_aes_128_sha</li>
+<li>ecdhe_ecdsa_aes_256_sha</li>
+<li>ecdh_rsa_3des_sha</li>
+<li>ecdh_rsa_aes_128_sha</li>
+<li>ecdh_rsa_aes_256_sha</li>
+<li>ecdhe_rsa_3des_sha</li>
+<li>ecdhe_rsa_aes_128_sha</li>
+<li>ecdhe_rsa_aes_256_sha</li>
+<li>ecdhe_ecdsa_aes_128_sha_256</li>
+<li>ecdhe_rsa_aes_128_sha_256</li>
+<li>ecdhe_ecdsa_aes_128_gcm_sha_256</li>
+<li>ecdhe_rsa_aes_128_gcm_sha_256</li>
+</ul>
+<p>FIPS is disabled by default.</p>
+<p>Example</p>
+<p><pre>NSSFIPS on</pre></p>
+<hr>
+<ul>
+<li>NSSOCSP</li>
+</ul>
+<p>Enables or disables OCSP (Online Certificate Status Protocol). This allows the server to check the validity of a client certificate before accepting it.</p>
+<p>OCSP is disabled by default.</p>
+<p>Example</p>
+<p><pre>NSSOCSP on</pre></p>
+<hr>
+<ul>
+<li>NSSCipherSuite</li>
+</ul>
+<p>There are two options for configuring the available ciphers. mod_nss provides its own cipher list, a space-separated list of the SSL ciphers used, with the prefix + to enable or - to disable, using the Cipher Name value in the tables below.</p>
+<p>Alternatively the mod_nss-style cipher definitions may be used, <a href="http://httpd.apache.org/docs/2.4/mod/mod_ssl.html#sslciphersuite">sslciphersuite</a>.</p>
+<p>The support options are:</p>
+<ul>
+<li>ALL</li>
+<li>COMPLEMENTOFALL</li>
+<li>DEFAULT</li>
+<li>RSA</li>
+<li>EDH</li>
+<li>NULL</li>
+<li>eNULL</li>
+<li>AES</li>
+<li>3DES</li>
+<li>DES</li>
+<li>RC4,</li>
+<li>MD5</li>
+<li>SHA</li>
+<li>SHA1</li>
+<li>SHA256</li>
+<li>SSLv3</li>
+<li>TLSv1</li>
+<li>TLSv12</li>
+<li>HIGH</li>
+<li>MEDIUM</li>
+<li>LOW</li>
+<li>EXPORT</li>
+<li>EXPORT40</li>
+<li>EXPORT56</li>
+</ul>
+<p>If a cipher string value contains a colon it is considered a mod_ssl-style cipher string.</p>
+<p>If a cipher string value contains a comma it is considered a mod_nss-style cipher string.</p>
+<p>If it contains neither then mod_nss first tries to apply OpenSSL ciphers then NSS ciphers.</p>
+<p>All ciphers are disabled by default.</p>
+<p>Available RSA ciphers are:</p>
+<table>
+<thead>
+<tr>
+<th>Cipher Name</th>
+<th>NSS Cipher definition</th>
+<th>Protocol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rsa_3des_sha</td>
+<td>TLS_RSA_WITH_3DES_EDE_CBC_SHA</td>
+<td>SSLv3/TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>rsa_des_sha</td>
+<td>TLS_RSA_WITH_DES_CBC_SHA</td>
+<td>SSLv3/TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>rsa_null_md5</td>
+<td>TLS_RSA_WITH_NULL_MD5</td>
+<td>SSLv3/TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>rsa_null_sha</td>
+<td>TLS_RSA_WITH_NULL_SHA</td>
+<td>SSLv3/TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>rsa_rc2_40_md5</td>
+<td>TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5</td>
+<td>SSLv3/TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>rsa_rc4_128_md5</td>
+<td>TLS_RSA_WITH_RC4_128_MD5</td>
+<td>SSLv3/TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>rsa_rc4_128_sha</td>
+<td>TLS_RSA_WITH_RC4_128_SHA</td>
+<td>SSLv3/TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>rsa_rc4_40_md5</td>
+<td>TLS_RSA_EXPORT_WITH_RC4_40_MD5</td>
+<td>SSLv3/TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>fips_des_sha</td>
+<td>SSL_RSA_FIPS_WITH_DES_CBC_SHA</td>
+<td>SSLv3/TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>fips_3des_sha</td>
+<td>SSL_RSA_FIPS_WITH_3DES_EDE_CBC_SHA</td>
+<td>SSLv3/TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>rsa_des_56_sha</td>
+<td>TLS_RSA_EXPORT1024_WITH_DES_CBC_SHA</td>
+<td>SSLv3/TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>rsa_rc4_56_sha</td>
+<td>TLS_RSA_EXPORT1024_WITH_RC4_56_SHA</td>
+<td>SSLv3/TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>rsa_aes_128_sha</td>
+<td>TLS_RSA_WITH_AES_128_CBC_SHA</td>
+<td>SSLv3/TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>rsa_aes_256_sha</td>
+<td>TLS_RSA_WITH_AES_256_CBC_SHA</td>
+<td>SSLv3/TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>camelia_128_sha</td>
+<td>TLS_RSA_WITH_CAMELLIA_128_CBC_SHA</td>
+<td>SSLv3/TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>camelia_256_sha</td>
+<td>TLS_RSA_WITH_CAMELLIA_256_CBC_SHA</td>
+<td>SSLv3/TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>null_sha_256</td>
+<td>TLS_RSA_WITH_NULL_SHA256</td>
+<td>TLSv1.2</td>
+</tr>
+<tr>
+<td>aes_128_sha_256</td>
+<td>TLS_RSA_WITH_AES_128_CBC_SHA256</td>
+<td>TLSv1.2</td>
+</tr>
+<tr>
+<td>aes_256_sha_256</td>
+<td>TLS_RSA_WITH_AES_256_CBC_SHA256</td>
+<td>TLSv1.2</td>
+</tr>
+<tr>
+<td>rsa_aes_128_gcm_sha_256</td>
+<td>TLS_RSA_WITH_AES_128_GCM_SHA256</td>
+<td>TLSv1.2</td>
+</tr>
+</tbody>
+</table>
+<p>The available server-side DHE ciphers are:</p>
+<table>
+<thead>
+<tr>
+<th>Cipher Name</th>
+<th>NSS Cipher definition</th>
+<th>Protocol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dhe_rsa_des_sha</td>
+<td>TLS_DHE_RSA_WITH_DES_CBC_SHA</td>
+<td>SSLv3/TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>dhe_rsa_3des_sha</td>
+<td>TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>dhe_rsa_aes_128_sha</td>
+<td>TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>dhe_rsa_aes_256_sha</td>
+<td>TLS_DHE_RSA_WITH_AES_256_CBC_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>dhe_rsa_camellia_128_sha</td>
+<td>TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>dhe_rsa_camellia_256_sha</td>
+<td>TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>dhe_rsa_aes_128_sha256</td>
+<td>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256</td>
+<td>TLSv1.2</td>
+</tr>
+<tr>
+<td>dhe_rsa_aes_256_sha256</td>
+<td>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256</td>
+<td>TLSv1.2</td>
+</tr>
+<tr>
+<td>dhe_rsa_aes_128_gcm_sha_256</td>
+<td>TLS_DHE_RSA_WITH_AES_128_GCM_SHA256</td>
+<td>TLSv1.2</td>
+</tr>
+</tbody>
+</table>
+<p>Additionally there are a number of ECC ciphers:</p>
+<table>
+<thead>
+<tr>
+<th>Cipher Name</th>
+<th>NSS Cipher definition</th>
+<th>Protocol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ecdh_ecdsa_null_sha</td>
+<td>TLS_ECDH_ECDSA_WITH_NULL_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdh_ecdsa_rc4_128_sha</td>
+<td>TLS_ECDH_ECDSA_WITH_RC4_128_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdh_ecdsa_3des_sha</td>
+<td>TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdh_ecdsa_aes_128_sha</td>
+<td>TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdh_ecdsa_aes_256_sha</td>
+<td>TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdhe_ecdsa_null_sha</td>
+<td>TLS_ECDHE_ECDSA_WITH_NULL_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdhe_ecdsa_rc4_128_sha</td>
+<td>TLS_ECDHE_ECDSA_WITH_RC4_128_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdhe_ecdsa_3des_sha</td>
+<td>TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdhe_ecdsa_aes_128_sha</td>
+<td>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdhe_ecdsa_aes_256_sha</td>
+<td>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdh_rsa_null_sha</td>
+<td>TLS_ECDH_RSA_WITH_NULL_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdh_rsa_128_sha</td>
+<td>TLS_ECDH_RSA_WITH_RC4_128_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdh_rsa_3des_sha</td>
+<td>TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdh_rsa_aes_128_sha</td>
+<td>TLS_ECDH_RSA_WITH_AES_128_CBC_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdh_rsa_aes_256_sha</td>
+<td>TLS_ECDH_RSA_WITH_AES_256_CBC_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>echde_rsa_null</td>
+<td>TLS_ECDHE_RSA_WITH_NULL_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdhe_rsa_rc4_128_sha</td>
+<td>TLS_ECDHE_RSA_WITH_RC4_128_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdhe_rsa_3des_sha</td>
+<td>TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdhe_rsa_aes_128_sha</td>
+<td>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdhe_rsa_aes_256_sha</td>
+<td>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdh_anon_null_sha</td>
+<td>TLS_ECDH_anon_WITH_NULL_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdh_anon_rc4_128sha</td>
+<td>TLS_ECDH_anon_WITH_RC4_128_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdh_anon_3des_sha</td>
+<td>TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdh_anon_aes_128_sha</td>
+<td>TLS_ECDH_anon_WITH_AES_128_CBC_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdh_anon_aes_256_sha</td>
+<td>TLS_ECDH_anon_WITH_AES_256_CBC_SHA</td>
+<td>TLSv1.0/TLSv1.1/TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdhe_ecdsa_aes_128_sha_256</td>
+<td>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256</td>
+<td>TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdhe_rsa_aes_128_sha_256</td>
+<td>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256</td>
+<td>TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdhe_ecdsa_aes_128_gcm_sha_256</td>
+<td>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256</td>
+<td>TLSv1.2</td>
+</tr>
+<tr>
+<td>ecdhe_rsa_aes_128_gcm_sha_256</td>
+<td>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256</td>
+<td>TLSv1.2</td>
+</tr>
+</tbody>
+</table>
+<p>Example</p>
+<p><pre>NSSCipherSuite +rsa_3des_sha,-rsa_des_56_sha,+rsa_des_sha,-rsa_null_md5,-rsa_null_sha,-rsa_rc2_40_md5,+rsa_rc4_128_md5,-rsa_rc4_128_sha,-rsa_rc4_40_md5,-rsa_rc4_56_sha,-fips_des_sha, +fips_3des_sha,-rsa_aes_128_sha,-rsa_aes_256_sha
+NSSCipherSuite ALL
+NSSCipherSuite rsa_3des_sha
+NSSCipherSuite RC4-SHA</pre></p>
+<hr>
+<ul>
+<li>NSSProtocol</li>
+</ul>
+<p>A comma-separated string that lists the basic protocols that the server can use (and clients may connect with). It doesn't enable a cipher specifically but allows ciphers for that protocol to be used at all.</p>
+<p>Options are:</p>
+<ul>
+<li>SSLv3</li>
+<li>TLSv1 (legacy only; replaced by TLSv1.0)</li>
+<li>TLSv1.0</li>
+<li>TLSv1.1</li>
+<li>TLSv1.2</li>
+<li>All</li>
+</ul>
+<p>Note that this differs from mod_ssl in that you can't add or subtract protocols.</p>
+<p>If no NSSProtocol is specified, mod_nss will default to allowing the use of the TLSv1.0, TLSv1.1 and TLSv1.2 protocols, where TLSv1.0 will be set to be the minimum protocol allowed, and TLSv1.2 will be set to be the maximum protocol allowed.
+  If values for NSSProtocol are specified, mod_nss will set both the minimum and the maximum allowed protocols based upon these entries allowing for the inclusion of every protocol in-between. For example, if only SSLv3 and TLSv1.1 are specified, SSLv3, TLSv1.0, and TLSv1.1 will all be allowed, as NSS utilizes protocol ranges to accept all protocols inclusively (TLSv1.1 -&gt; TLSv1.0 -&gt; SSLv3.0), and does not allow exclusion of any protocols in the middle of a range (e. g. - TLSv1.0).</p>
+<p>Finally, NSS will always automatically negotiate the use of the strongest possible protocol that has been specified which is acceptable to both sides of a given connection.
+  SSLv2 is not supported by default at this time.</p>
+<p>Example</p>
+<p><pre>NSSProtocol SSLv3,TLSv1.0,TLSv1.1</pre></p>
+<hr>
+<ul>
+<li>NSSNickname</li>
+</ul>
+<p>Specify the nickname to be used for this the server certificate. Certificates stored in an NSS database are referred to using nicknames which makes accessing a specific certificate much easier. It is also possible to specify the certificate DN but it is easier to use a nickname. If the nickname includes spaces then the value needs to be enclosed in double quotes.</p>
+<p>Example</p>
+<p><pre>NSSNickname Server-Cert
+NSSNickname "This contains a space"</pre></p>
+<p><strong>NOTE</strong>: There is nothing magical about the string "Server-Cert." A nickname can be anything. Historically this was Server-Cert in the Netscape server products that used NSS.</p>
+<hr>
+<ul>
+<li>NSSECCNickname</li>
+</ul>
+<p>Similar to NSSNickname but designed for use with ECC certificates. This allows you to have both an RSA certificate and an ECC certificate available on the same listening port. This allows newer clients that support ECC to connect with those ciphers but also allows older clients to connect with an RSA cipher.</p>
+<p>Example</p>
+<p>NSSNickname Server-Cert-ECC</p>
+<hr>
+<ul>
+<li>NSSEnforceValidCerts</li>
+</ul>
+<p>By default mod_nss will not start up if the server certificate is not valid. This means that if the certificate has expired or is signed by a CA that is not trusted in the NSS certificate database the server will not start. If you would like the server to start anyway you can add this directive to nss.conf and the server will start with just a warning. Not enforcing a valid server certificate is not recommended.</p>
+<p>Example</p>
+<p><pre>NSSEnforceValidCerts on</pre></p>
+<hr>
+<ul>
+<li>NSSVerifyClient</li>
+</ul>
+<p>Determines whether Client Certificate Authentication will be requested or required. This may be set in a per-server or per-directory context. At the server level the certificate is requested during the initial SSL handshake. In the per-directry context an SSL renogitation is required and a certificate requested from the client.</p>
+<p>Available options are:</p>
+<ul>
+<li>none: no client certificate is required or requested</li>
+<li>optional: a client certificate is requested but if one is not available, the connection may continue.</li>
+<li>require: a valid client certificate is required for the connection to continue.</li>
+</ul>
+<p>The mod_ssl option option_no_ca is not supported.</p>
+<p>There is no NSSVerifyDepth directive. NSS always verifies the entire certificate chain.</p>
+<p>Example</p>
+<p><pre>NSSVerifyClient require</pre></p>
+<hr>
+<ul>
+<li>NSSSessionTickets</li>
+</ul>
+<p>Enables or disables support for TLS Session tickets (RFC 5077). The default is off.</p>
+<p>Example</p>
+<p><pre>NSSSessionTickets on</pre></p>
+<hr>
+<ul>
+<li>NSSUserName</li>
+</ul>
+<p>Defines the field in the client certificate which will set the user field in the request. The option FakeBasicAuth (see NSSOptions) must also be set for this to work.</p>
+<p>Example</p>
+<p><pre>NSSUserName SSL_CLIENT_S_DN_UID</pre></p>
+<hr>
+<ul>
+<li>NSSOptions</li>
+</ul>
+<p>Control various options in a per-server or per-directory context.</p>
+<ul>
+<li>FakeBasicAuth: When this option is enabled and NSSUserName is set then the certificate attribute defined in NSSUserName is used to populate the value of r-&gt;user in the Apache request object. This equates to the environmant variable REMOTE_USER.</li>
+<li>StdEnvVars: A standard set of SSL environment variables is created.
+  CompatEnvVars: A no-op. In previous versions of mod_ssl this would set additional environment variables for backwards compatibility with older Apache SSL implementations.</li>
+<li>ExportCertData: Several additional environment variables are created, SSL_CLIENT_CERT, SSL_CLIENT_CERT_CHAIN[0..n] and SSL_SERVER_CERT. This provides additional certificate information on the client and server to the environment, plus every CA certificate in the client certificate.</li>
+<li>StrictRequire: Absolutely forces the connection to be forbidden when NSSRequireSSL or NSSRequire aren't met.</li>
+<li>OptRenegotiate: Allows the SSL connection to be renegotiated using a different configuration. This is designed for a per-directory and is relatively expensive to do. For example, it can be used to force very strong ciphers in particular directories.</li>
+</ul>
+<p>All options are disabled by default.</p>
+<p>Example:</p>
+<p><pre>NSSOptions +FakeBasicAuth
+  &lt; Files ~ ".(cgi|shtml)$"&gt;
+  NSSOptions +StdEnvVars
+  &lt; Files&gt;</pre></p>
+<hr>
+<ul>
+<li>NSSRequireSSL</li>
+</ul>
+<p>The request is forbidden unless the connection is using SSL. Only available in a per-directory context. This takes no arguments.</p>
+<p>Example</p>
+<p><pre>NSSRequireSSL</pre></p>
+<hr>
+<ul>
+<li>NSSRequire</li>
+</ul>
+<p>Provides a regular expression-based access-control mechanism. Access may be restricted (or allowed) based on any number of variables such as components of the client certificate, the remote IP address, etc.</p>
+<p>Example</p>
+<p><pre>NSSRequire</pre></p>
+<hr>
+<ul>
+<li>NSSRenegBufferSize</li>
+</ul>
+<p>Configure the amount of memory that will be used for buffering the request body if a per-location SSL renegotiation is required due to changed access control requirements. The value is in bytes. The default is 128K.
+  If set to 0 then no buffering is done.</p>
+<p>Example</p>
+<p><pre>NSSRenegBufferSize 262144</pre></p>
+<hr>
+<ul>
+<li>NSSSNI</li>
+</ul>
+<p>Enables or disables Server Name Identification (SNI) extension check for TLS. This option is enabled by default. To disable SNI, set this to off in the default name-based VirtualHost.</p>
+<p>Example</p>
+<p><pre>NSSSNI off</pre></p>
+<hr>
+<ul>
+<li>NSSStrictSNIVHostCheck</li>
+</ul>
+<p>Configures whether a non-SNI client is allowed to access a name-based VirtualHost. If set to on in the default name-based VirtualHost then clients that are SNI unaware cannot access any virtual host. If set to on in any other VirtualHost then SNI unaware clients cannot access this particular virtual host.</p>
+<p>Example</p>
+<p><pre>NSSStrictSNIVHostCheck off</pre></p>
+<hr>
+<ul>
+<li>NSSProxyEngine</li>
+</ul>
+<p>Enables or disables mod_nss HTTPS support for mod_proxy.</p>
+<p>Example</p>
+<p><pre>NSSProxyEngine on</pre></p>
+<hr>
+<ul>
+<li>NSSProxyProtocol</li>
+</ul>
+<p>Specifies the SSL protocols that may be used in proxy connections. The syntax is identical to NSSProtocol.</p>
+<p>Example</p>
+<p><pre>NSSProxyProtocol SSLv3</pre></p>
+<hr>
+<ul>
+<li>NSSProxyCipherSuite</li>
+</ul>
+<p>Specifies the SSL ciphers available for proxy connections. The syntax is identical to NSSCipherSuite.</p>
+<p>Example</p>
+<p><pre>NSSProxyCipherSuite +rsa_3des_sha,-rsa_null_md5,-rsa_null_sha,+rsa_rc4_128_md5</pre></p>
+<hr>
+<ul>
+<li>NSSProxyNickname</li>
+</ul>
+<p>The nickname of the client certificate to send if the remote server requests client authentication.</p>
+<p>Example</p>
+<p><pre>NSSProxyNickname beta</pre></p>
+<hr>
+<ul>
+<li>NSSProxyCheckPeerCN</li>
+</ul>
+<p>Compare the CN value of the peer certificate with the hostname being requested. If this is set to on, the default, then the request will fail if they do not match. If this is set to off then this comparison is not done. Note that this test is your only protection against a man-in-the-middle attack so leaving this as on is strongly recommended.</p>
+<p>Example</p>
+<p><pre>NSSProxyCheckPeerCN on</pre></p>
+<hr>
+<h2>Environment Variables</h2>
+<p>Quite a few environment variables (for CGI and SSI) may be set depending on the NSSOptions configuration. It can be expensive to set these so it is recommended that they only be set when they will be used (e.g. don't set them on a per-server basis). Here is a list of the variables along with the option used to set them.</p>
+<p>Always Set</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTTPS</td>
+<td>Set to "on" if HTTPS is being used</td>
+</tr>
+</tbody>
+</table>
+<p>+StdEnvVars</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SSL_VERSION_INTERFACE</td>
+<td>The version of mod_nss the server is running</td>
+</tr>
+<tr>
+<td>SSL_VERSION_LIBRARY</td>
+<td>The version of NSS that mod_nss was compiled against.</td>
+</tr>
+<tr>
+<td>SSL_PROTOCOL</td>
+<td>SSLv3, TLSv1.0, TLSv1.1 or TLSv1.2</td>
+</tr>
+<tr>
+<td>SSL_CIPHER</td>
+<td>The cipher the connection is using</td>
+</tr>
+<tr>
+<td>SSL_CIPHER_EXPORT</td>
+<td>true if the cipher is an export cipher, false otherwise</td>
+</tr>
+<tr>
+<td>SSL_CIPHER_USEKEYSIZE</td>
+<td>Number if bits the cipher is using</td>
+</tr>
+<tr>
+<td>SSL_CIPHER_ALGKEYSIZE</td>
+<td>Max number of bits possible in the cipher</td>
+</tr>
+<tr>
+<td>SSL_CLIENT_VERIFY</td>
+<td>NONE if no client auth, SUCCESS or FAILED if SSLVerifyCert is set</td>
+</tr>
+<tr>
+<td>SSL_CLIENT_V_START</td>
+<td>Client certificate validity start time</td>
+</tr>
+<tr>
+<td>SSL_CLIENT_V_END</td>
+<td>Client certificate validity end time</td>
+</tr>
+<tr>
+<td>SSL_CLIENT_V_REMAIN</td>
+<td>Number of days that the certificate is valid</td>
+</tr>
+<tr>
+<td>SSL_CLIENT_M_VERSION</td>
+<td>X.509 version of the client certificate</td>
+</tr>
+<tr>
+<td>SSL_CLIENT_M_SERIAL</td>
+<td>Serial number of the client certificate</td>
+</tr>
+<tr>
+<td>SSL_CLIENT_A_KEY</td>
+<td>Algorithm used for client key</td>
+</tr>
+<tr>
+<td>SSL_CLIENT_A_SIG</td>
+<td>Algorithm used for the signature of the client key</td>
+</tr>
+<tr>
+<td>SSL_CLIENT_S_DN</td>
+<td>Distinguished Name (DN) of the client certificate</td>
+</tr>
+<tr>
+<td>SSL_CLIENT_S_DN_[C,ST,L,O,OU,CN,T,I,G,S,D,UID,Email]</td>
+<td>Components of the client certificate. Only those that exist in the certificate are created.</td>
+</tr>
+<tr>
+<td>SSL_CLIENT_SAN_[DNS, IPAddr, Email, OTHER_msUPN]_[0..n]</td>
+<td>A subset of Subject Alternate Names. Each entry is appended with a unique sequential number.</td>
+</tr>
+<tr>
+<td>SSL_CLIENT_I_DN</td>
+<td>Distinguished Name (DN) of the client certificate issuer</td>
+</tr>
+<tr>
+<td>SSL_CLIENT_I_DN_[C,ST,L,O,OU,CN,T,I,G,S,D,UID,Email]</td>
+<td>Components of the client issuer certificate. Only those that exist in the certificate are created</td>
+</tr>
+<tr>
+<td>SSL_SERVER_DN</td>
+<td>Distinguished Name (DN) of the server certificate</td>
+</tr>
+<tr>
+<td>SSL_SERVER_DN_[C,ST,L,O,OU,CN,T,I,G,S,D,UID,Email]</td>
+<td>Components of the server certificate. Only those that exist in the certificate are created</td>
+</tr>
+<tr>
+<td>SSL_SERVER_I_DN_[C,ST,L,O,OU,CN,T,I,G,S,D,UID,Email]</td>
+<td>Components of the server issuer certificate. Only those that exist in the certificate are created</td>
+</tr>
+<tr>
+<td>SSL_SERVER_M_VERSION</td>
+<td>X.509 version of the server certificate</td>
+</tr>
+<tr>
+<td>SSL_SERVER_M_SERIAL</td>
+<td>Serial number of the server certificate</td>
+</tr>
+<tr>
+<td>SSL_SERVER_V_START</td>
+<td>Server certificate validity start time</td>
+</tr>
+<tr>
+<td>SSL_SERVER_V_END</td>
+<td>Server certificate validity end time</td>
+</tr>
+<tr>
+<td>SSL_SERVER_A_KEY</td>
+<td>Algorithm used for server key</td>
+</tr>
+<tr>
+<td>SSL_SERVER_A_SIG</td>
+<td>Algorithm used for the signature of the server key</td>
+</tr>
+<tr>
+<td>SSL_SESSION_ID</td>
+<td>SSL Session ID</td>
+</tr>
+<tr>
+<td>SSL_SERVER_SAN_[DNS, IPAddr, Email, OTHER_msUPN]_[0..n]</td>
+<td>A subset of Subject Alternate Names. Each entry is appended with a unique sequential number.</td>
+</tr>
+</tbody>
+</table>
+<p>+ExportCertData</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SSL_SERVER_CERT</td>
+<td>The server certificate in PEM format.</td>
+</tr>
+<tr>
+<td>SSL_CLIENT_CERT</td>
+<td>The client certificate in PEM format (if available)</td>
+</tr>
+<tr>
+<td>SSL_CLIENT_CERT_CHAIN_[0..n]</td>
+<td>Each certificate in the client certificate chain in PEM format (including the client certificate itself).</td>
+</tr>
+</tbody>
+</table>
+<h2>Database Management</h2>
+<p>NSS stores it's certificates and keys in a set of files referred to as the "certificate database." The files by default (with NSS 3.x) are named cert8.db, key3.db and secmod.db. See the <a href="http://www.mozilla.org/projects/security/pki/nss/">NSS documentation</a> for more information on these specific files.
+By default the NSS databases use the Berkeley Database format (cert8 and key3). To use the sqlite format (cert9 and key4) either include sql: in all references to the database (-d sql:/path/to/database) or export NSS_DEFAULT_DB_TYPE="sql".</p>
+<p>For more details <a href="https://wiki.mozilla.org/NSS_Shared_DB">here</a></p>
+<p>The NSS database also stores any Certificate Revocation Lists (CRLs).</p>
+<p>Several NSS tools are available for managing certificates, keys, PKCS#11 modules and CRLs. These come with the NSS distribution. Here is a brief overview:</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>certutil</td>
+<td>Generate Certificate Signing Requests, install certificates and manage certificate trust flags.</td>
+</tr>
+<tr>
+<td>crlutil</td>
+<td>Manage certificate revocation lists (CRLs).</td>
+</tr>
+<tr>
+<td>modutil</td>
+<td>Manage the database of PKCS11 modules (secmod.db). Add modules and modify the properties of existing modules (such as whether a module is the default provider of some crypto service).</td>
+</tr>
+<tr>
+<td>pk12util</td>
+<td>Import and export keys and certificates in PKCS12 format.</td>
+</tr>
+</tbody>
+</table>
+<p>Here are some quick, useful commands. This assumes that the NSPR and NSS libraries are in your LD_LIBRARY_PATH. Certificates may be referred to by either their DN or by a short nickname that is assigned when the certificate is added to the database. The nickname is the preferred method of referring to certificates. All of these commands use the -d option to specify the database location. The default is ~/.netscape and is probably not what you want.</p>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Create a Database</td>
+<td>certutil -N -d [path]</td>
+</tr>
+<tr>
+<td>List all Certificates</td>
+<td>certutil -L -d [path]</td>
+</tr>
+<tr>
+<td>Extract a cert (Server-Cert) in ASCII</td>
+<td>certutil -L -n Server-Cert -d [path] -a</td>
+</tr>
+<tr>
+<td>Extract a cert and key (Server-Cert) in PKCS#12</td>
+<td>pk12util -o server.p12 -n Server-Cert -d [path]</td>
+</tr>
+<tr>
+<td>Import a cert and key (Import-Me) from PKCS#12</td>
+<td>pk12util -i server.p12 -n Import-Me -d [path]</td>
+</tr>
+</tbody>
+</table>
+<h2>Importing OpenSSL Certificates</h2>
+<p>If you have existing OpenSSL certificates you can import them into an NSS certificate database.</p>
+<p>To import a server certificate (nickname Server-Cert):</p>
+<pre>% openssl pkcs12 -export -in /path/to/certificate -inkey /path/to/keyfile -out server.p12 -name "Server-Cert" -passout pass:foo
+% pk12util -i server.p12 -d [path] -W foo </pre>
+
+<p>To import a CA certificate:</p>
+<pre>% certutil -A -n "myca" -t "CT,," -d [path] -a -i /path/to/cacertificate</pre>
+
+<p>To import a CRL:</p>
+<pre>% openssl crl -in /path/to/crlfile -out /tmp/crl.tmp -inform PEM -outform DER
+% crlutil -I -t 1 -d [path] -i /tmp/crl.tmp</pre>
+
+<p>To verify that your server certificate was imported properly, you can have NSS validate it:</p>
+<pre>% certutil -V -n Server-Cert -u V -d .
+certutil: certificate is valid</pre>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/mod-nss.html">mod-nss</a>
+    </p>
+  </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'akasurdegithubio';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</article>
+
+    <footer>
+<p>
+  &copy; Abhijeet Kasurde 2020 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+         src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-76778737-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "The missing manual - mod-nss",
+  "headline": "The missing manual - mod-nss",
+  "datePublished": "2017-01-13 12:03:00+05:30",
+  "dateModified": "2017-01-13 12:03:00+05:30",
+  "author": {
+    "@type": "Person",
+    "name": "Abhijeet Kasurde",
+    "url": "/author/abhijeet-kasurde.html"
+  },
+  "image": "https://pbs.twimg.com/profile_images/598341193336954882/HHxz7Y7G.png",
+  "url": "/mod-nss-the-missing-manual.html",
+  "description": "The missing manual - mod-nss"
+}
+</script></body>
+</html>
