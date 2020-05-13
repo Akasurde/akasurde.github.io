@@ -74,38 +74,38 @@
     <p>Module introduction - vmware_core_info</p>
 <p>User can retrieve information about various VMware objects using Ansible. VMware has recently added REST APIs to communicate with vSphere. Ansible uses these APIs to perform automation related to VMware. In this article, we will be discussing <code>vmware_core_info</code> Ansible module, which allows user to retrieve information about VMware object.</p>
 <h2>main.yml</h2>
-<div class="highlight"><pre><span></span><span class="o">---</span>
-<span class="o">-</span> <span class="nv">hosts</span>: <span class="nv">all</span>
-  <span class="nv">gather_facts</span>: <span class="nv">no</span>
-  <span class="nv">connection</span>: <span class="nv">httpapi</span>
-  <span class="nv">vars</span>:
-    <span class="nv">datacenter_name</span>: <span class="nv">Asia</span><span class="o">-</span><span class="nv">Datacenter1</span>
-  <span class="nv">vars_files</span>:
-    <span class="o">-</span> <span class="nv">vcenter_vars</span>.<span class="nv">yml</span>
-  <span class="nv">tasks</span>:
-  <span class="o">-</span> <span class="nv">name</span>: <span class="nv">Get</span> <span class="nv">all</span> <span class="nv">Datacenter</span>
-    <span class="nv">vmware_core_info</span>:
-      <span class="nv">object_type</span>: <span class="nv">datacenter</span>
-    <span class="nv">register</span>: <span class="nv">all_dcs</span>
+<div class="highlight"><pre><span></span><code><span class="x">---</span>
+<span class="x">- hosts: all</span>
+<span class="x">  gather_facts: no</span>
+<span class="x">  connection: httpapi</span>
+<span class="x">  vars:</span>
+<span class="x">    datacenter_name: Asia-Datacenter1</span>
+<span class="x">  vars_files:</span>
+<span class="x">    - vcenter_vars.yml</span>
+<span class="x">  tasks:</span>
+<span class="x">  - name: Get all Datacenter</span>
+<span class="x">    vmware_core_info:</span>
+<span class="x">      object_type: datacenter</span>
+<span class="x">    register: all_dcs</span>
 
-  <span class="o">-</span> <span class="nv">name</span>: <span class="nv">Get</span> <span class="nv">managed</span> <span class="nv">object</span> <span class="nv">id</span> <span class="k">for</span> <span class="nv">datacenter</span>
-    <span class="nv">set_fact</span>:
-      <span class="nv">datacenter_managed_object_id</span>: <span class="s2">&quot;</span><span class="s">{{ item.datacenter }}</span><span class="s2">&quot;</span>
-    <span class="k">loop</span>: <span class="s2">&quot;</span><span class="s">{{ all_dcs.datacenter.value | json_query(dc_query) }}</span><span class="s2">&quot;</span>
-    <span class="nv">vars</span>:
-      <span class="nv">dc_query</span>: <span class="s2">&quot;</span><span class="s">[?name == `{{ datacenter_name }}` ]</span><span class="s2">&quot;</span>
+<span class="x">  - name: Get managed object id for datacenter</span>
+<span class="x">    set_fact:</span>
+<span class="x">      datacenter_managed_object_id: &quot;</span><span class="cp">{{</span> <span class="nv">item.datacenter</span> <span class="cp">}}</span><span class="x">&quot;</span>
+<span class="x">    loop: &quot;</span><span class="cp">{{</span> <span class="nv">all_dcs.datacenter.value</span> <span class="o">|</span> <span class="nf">json_query</span><span class="o">(</span><span class="nv">dc_query</span><span class="o">)</span> <span class="cp">}}</span><span class="x">&quot;</span>
+<span class="x">    vars:</span>
+<span class="x">      dc_query: &quot;[?name == `</span><span class="cp">{{</span> <span class="nv">datacenter_name</span> <span class="cp">}}</span><span class="x">` ]&quot;</span>
 
-  <span class="o">-</span> <span class="nv">name</span>: <span class="nv">Display</span> <span class="nv">MoID</span> <span class="k">for</span> <span class="nv">datacenter</span>
-    <span class="nv">debug</span>:
-      <span class="nv">msg</span>: <span class="s2">&quot;</span><span class="s">{{ datacenter_managed_object_id }}</span><span class="s2">&quot;</span>
+<span class="x">  - name: Display MoID for datacenter</span>
+<span class="x">    debug:</span>
+<span class="x">      msg: &quot;</span><span class="cp">{{</span> <span class="nv">datacenter_managed_object_id</span> <span class="cp">}}</span><span class="x">&quot;</span>
 
-  <span class="o">-</span> <span class="nv">name</span>: <span class="nv">Get</span> <span class="nv">all</span> <span class="nv">ESXi</span> <span class="nv">information</span>
-    <span class="nv">vmware_core_info</span>:
-      <span class="nv">object_type</span>: <span class="nv">host</span>
-      <span class="nv">filters</span>:
-        <span class="o">-</span> <span class="nv">datacenters</span>: <span class="s2">&quot;</span><span class="s">{{ datacenter_managed_object_id }}</span><span class="s2">&quot;</span>
-    <span class="nv">register</span>: <span class="nv">esxi_list</span>
-</pre></div>
+<span class="x">  - name: Get all ESXi information</span>
+<span class="x">    vmware_core_info:</span>
+<span class="x">      object_type: host</span>
+<span class="x">      filters:</span>
+<span class="x">        - datacenters: &quot;</span><span class="cp">{{</span> <span class="nv">datacenter_managed_object_id</span> <span class="cp">}}</span><span class="x">&quot;</span>
+<span class="x">    register: esxi_list</span>
+</code></pre></div>
 
 
 <p>here, we are using Ansible VMware httpapi plugin to connect to vSphere REST API. You can read more about Ansible httpapi plugin <a href="https://docs.ansible.com/ansible/latest/plugins/httpapi.html">here</a></p>

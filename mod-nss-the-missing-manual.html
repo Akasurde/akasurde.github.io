@@ -137,8 +137,8 @@
 <p>It also tries to rename ssl.conf to ssl.conf.old.</p>
 <p>The assumption is that mod_nss is replacing mod_ssl. They can co-exist as long as they are listening on separate ports.</p>
 <p>The mod_nss configuration file, nss.conf, is copied into the Apache configuration directory (as reported by apxs). You may need to make a manual change to httpd.conf to load this file. If you have a Red Hat-style Apache installation with a conf.d just move <code>nss.conf</code> there. It will be automatically loaded. Otherwise you will need to add the following line to <code>httpd.conf</code> (location relative to <code>httpd.conf</code>):</p>
-<div class="highlight"><pre><span></span><span class="k">Include</span> <span class="nv">conf</span><span class="o">/</span><span class="nv">nss</span>.<span class="nv">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">Include conf/nss.conf</span>
+</code></pre></div>
 
 
 <p>This has Apache load the <code>mod_nss</code> configuration file, <code>nss.conf</code>. It is here that you will setup your VirtualServer entries to and configure your SSL servers. If you have a certificate with Subject Alternative Names then you can configure separate VirtualServer entries for eacon one.
