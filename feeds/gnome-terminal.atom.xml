@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://akasurde.github.io - gnome-terminal</title><link href="https://akasurde.github.io/" rel="alternate"></link><link href="https://akasurde.github.io/feeds/gnome-terminal.atom.xml" rel="self"></link><id>https://akasurde.github.io/</id><updated>2016-03-12T12:03:00+05:30</updated><subtitle>Developer, Hacker</subtitle><entry><title>Command line hacks</title><link href="https://akasurde.github.io/gnome-terminal-hacks.html" rel="alternate"></link><published>2016-03-12T12:03:00+05:30</published><updated>2016-03-12T12:03:00+05:30</updated><author><name>Abhijeet Kasurde</name></author><id>tag:akasurde.github.io,2016-03-12:/gnome-terminal-hacks.html</id><summary type="html">&lt;p&gt;Command line hacks&lt;/p&gt;</summary><content type="html">&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Running previous command with sudo&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ ls -la
+$ sudo !!&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Usage&lt;/strong&gt;: This will run &lt;code&gt;ls -la&lt;/code&gt; command using sudo command&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Using !! on shell prompt&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ ls -la a  &amp;amp;&amp;amp; echo !!:2&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Usage&lt;/strong&gt;: This will print a on screen.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Finding top 5 largest files in directory&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ ls -lSh . | head -5&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Finding top 5 smallest files in directory&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ ls -lSr . | head -5&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Finding top 10 directories in /&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ du -a /var | sort -n -r | head -n 10&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Finding top directories in /&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ du -ch --max-depth 1 /&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Using !! to replace some part of command&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ echo "foo"
+$ !!:gs/foo/bar&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Usage&lt;/strong&gt;: Runs previous command replacing &lt;code&gt;foo&lt;/code&gt; by &lt;code&gt;bar&lt;/code&gt; every time that &lt;code&gt;foo&lt;/code&gt; appears in previous command&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Using !$, !^, !*&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ echo foo bar baz
+$ echo !$ # will return baz
+$ echo !^ # will return foo
+$ echo !* # will return foo bar baz&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Press ESC + . to copy last argument of bash command&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ cp /from/same/path/file /to/some/path
+$ cd [ESC + . ] # This will take you to /to/some/path&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Tail to dmesg&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ watch 'dmesg | tail -10'&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;To determine if you have a process holding an unlinked file open&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ lsof -a +L1 path_of_directory&lt;/pre&gt; or
+&lt;pre&gt;$ lsof +D +L1 path_of_directory&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Find the directory which takes highest space in root&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ du --max-depth=1 -h&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Report XSI interprocess communication facilities status&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ ipcs -s # for seamphore&lt;/pre&gt;
+&lt;pre&gt;$ ipcs -q # for message queues&lt;/pre&gt;
+&lt;pre&gt;$ ipcs -m # for shared memory segments&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Delete till last word in gnome-terminal&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt; CRTL + w &lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Go to start of line in gnome-terminal&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;CTRL + a&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Delete single word on gnome-terminal&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;ALT + BACKSPACE&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ask Linux to rescan the SCSI devices on that FC HBA&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ echo - - - &amp;gt;/sys/class/scsi_host/host$NUMBER/scan&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Usage&lt;/strong&gt;: The wildcards “- - -” mean to look at every channel, every target, every LUN.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Taking diff of directory&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ diff -bur directory_2 directory_1&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Executing multiple commands using xargs&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ echo 1 | xargs -I{} sh -c "echo {} &amp;amp;&amp;amp; echo {}"&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Usage&lt;/strong&gt;: Here xargs will take arguments in {}, replace {} in next shell prompt&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Force running logrotate configuration file&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ logrotate --force /etc/logrotate.d/nginx&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Check permissions of file or directory&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ stat /var/lib/kdcproxy| sed -n '/^Access: (/{s/Access: (([0-9]+).*$/\1/;p}'&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Find which process owns port number&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ fuser -v -n tcp port_number&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Usage&lt;/strong&gt;: fuser -v -n tcp 6000&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;List used ports&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ lsof -i protocol_name:port_number&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Usage&lt;/strong&gt;: &lt;code&gt;lsof -i tcp:80&lt;/code&gt; checks apache running on port number 80 or not&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Get blocks and partitions&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ egrep -v "#blocks|^$" /proc/partitions|awk '{print $3,  $4}'&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;More swap with a swap file&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ dd if=/dev/zero of=/swapfile bs=1024 count=65536 #Create 64MB swap file on your root partition
+$ mkswap /swapfile 65536          #convert file to swap file
+$ sync
+$ swapon /swapfile        #add swapfile to your swapspace&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create file of 1 TB file with 8192 blocksize&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ dd if=/dev/zero of=/mnt/disk8 bs=8192 seek=134217728 count=0&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Post data using curl&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ curl http://10.209.103.136:443 -d 'hostname=blah' -X POST -v&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="gnome-terminal"></category><category term="gnome-terminal"></category><category term="bash"></category><category term="ls"></category><category term="dd"></category><category term="swap"></category><category term="shortcut"></category><category term="hacks"></category></entry></feed>

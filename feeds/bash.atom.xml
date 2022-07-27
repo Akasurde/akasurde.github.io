@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://akasurde.github.io - bash</title><link href="https://akasurde.github.io/" rel="alternate"></link><link href="https://akasurde.github.io/feeds/bash.atom.xml" rel="self"></link><id>https://akasurde.github.io/</id><updated>2016-06-04T12:03:00+05:30</updated><subtitle>Developer, Hacker</subtitle><entry><title>Bash alias functions</title><link href="https://akasurde.github.io/alias-function-cheat-sheet.html" rel="alternate"></link><published>2016-06-04T12:03:00+05:30</published><updated>2016-06-04T12:03:00+05:30</updated><author><name>Abhijeet Kasurde</name></author><id>tag:akasurde.github.io,2016-06-04:/alias-function-cheat-sheet.html</id><summary type="html">&lt;p&gt;Bash alias function&lt;/p&gt;</summary><content type="html">&lt;ul&gt;
+&lt;li&gt;Function to add alias of command&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;
+function addalias() {
+    echo -e "adding alias $1 for $2\n"
+    echo -e "alias ${1}=\"${2}\"" &gt;&gt; ~/.bashrc
+    . ~/.bashrc
+}
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Usage&lt;/strong&gt; : &lt;code&gt;addalias  nameofalias "command"&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Function to find newly installed python module working&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;
+function import(){
+    python -c "import ${1}" 2&gt; /dev/null
+    [ $? -eq 0 ] &amp;&amp; echo -e "Python module ${1} installed properly" || \
+    echo -e "Python module ${1} is missing or perhaps mispelled"
+}
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Usage&lt;/strong&gt; : &lt;code&gt;import python_modulename&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Function to mkdir and cd into directory&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;
+function mkcd () {
+    mkdir -p "$@" &amp;&amp; eval cd "\"\$$#\"";
+}
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Usage&lt;/strong&gt; : &lt;code&gt;mkcd abc&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Function to show IP of all connections&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;
+function ips () {
+  local interface=""
+  local types='vmnet|en|eth|vboxnet|wlan|wl|tap|tun'
+  local i
+  for i in $(ifconfig \
+      | egrep -o '(^('$types')[0-9]|inet (addr:)?([0-9]+\.){3}[0-9]+)' \
+      | egrep -o '(^('$types')[0-9]|([0-9]+\.){3}[0-9]+)' \
+      | grep -v 127.0.0.1
+  ); do
+      if ! [ "$( echo $i | perl -pi -e 's/([0-9]+\.){3}[0-9]+//g' )" == "" ]; then
+          interface="$i":
+      else
+          echo $interface $i
+      fi
+  done
+}
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Usage&lt;/strong&gt;: &lt;code&gt;ips&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Function to check "Are you root ?"&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;
+function chk_root () {
+    if [ ! $( id -u ) -eq 0 ]; then
+        echo -e "Must be run as root"
+        exit
+    fi
+}
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Usage&lt;/strong&gt;: Just use &lt;code&gt;chk_root&lt;/code&gt; in script&lt;/p&gt;</content><category term="bash"></category><category term="bash"></category><category term="alias"></category><category term="functions"></category><category term="cheatsheet"></category></entry><entry><title>Bash alias</title><link href="https://akasurde.github.io/alias-cheat-sheet.html" rel="alternate"></link><published>2016-06-01T12:03:00+05:30</published><updated>2016-06-01T12:03:00+05:30</updated><author><name>Abhijeet Kasurde</name></author><id>tag:akasurde.github.io,2016-06-01:/alias-cheat-sheet.html</id><summary type="html">&lt;p&gt;Bash command alias&lt;/p&gt;</summary><content type="html">&lt;p&gt;Following are some alias to make you work faster&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Alias for &lt;code&gt;cd&lt;/code&gt; command&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;
+alias cd..="cd .."
+alias 2..="cd ../.."
+alias 3..="cd ../../.."
+alias 4..="cd ../../../.."
+alias 5..="cd ../../../../.."
+&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Alias for &lt;code&gt;apt-get&lt;/code&gt; command&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;
+alias agi='apt-get install'
+alias agu='apt-get update'
+alias ags='apt-cache search'
+alias agsh='apt-cache show'
+alias agr='apt-get remove'
+alias agd='apt-get dist-upgrade'
+&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Alias for &lt;code&gt;ssh&lt;/code&gt; command&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;
+alias dev="user@dev.example.com -p 8000"
+alias prod="user@prod.example.com -p 8000"
+&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Alias for &lt;code&gt;df&lt;/code&gt; command&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;
+alias df="df -TPh"
+&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Alias for Port usages&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;
+alias lsof="sudo lsof -i -P -sTCP:LISTEN"
+&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="bash"></category><category term="bash"></category><category term="alias"></category><category term="cheatsheet"></category></entry></feed>

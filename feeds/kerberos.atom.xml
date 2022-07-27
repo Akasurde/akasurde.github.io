@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://akasurde.github.io - kerberos</title><link href="https://akasurde.github.io/" rel="alternate"></link><link href="https://akasurde.github.io/feeds/kerberos.atom.xml" rel="self"></link><id>https://akasurde.github.io/</id><updated>2016-04-22T12:03:00+05:30</updated><subtitle>Developer, Hacker</subtitle><entry><title>How to enable Kerberos Authentication in Google Chrome</title><link href="https://akasurde.github.io/krb-auth-chrome.html" rel="alternate"></link><published>2016-04-22T12:03:00+05:30</published><updated>2016-04-22T12:03:00+05:30</updated><author><name>Abhijeet Kasurde</name></author><id>tag:akasurde.github.io,2016-04-22:/krb-auth-chrome.html</id><summary type="html">&lt;p&gt;This blog post will help you to enable Kerberos Authentication in Google Chrome&lt;/p&gt;</summary><content type="html">&lt;p&gt;Enable Simple and protected GSSAPI Negotiation Mechanism (SPNEGO) in google-chrome for allowing user
+to login using Kerberos Authentication used by Base OS&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Firstly, install &lt;a href="https://www.google.com/chrome/"&gt;Google Chrome&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;and then create an empty directory&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ mkdir -p /etc/opt/chrome/policies/managed/ &lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Now, create a JSON file with following content&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ cd /etc/opt/chrome/policies/managed/ &lt;/pre&gt;
+&lt;pre&gt;$ cat mydomain.json
+{ "AuthServerWhitelist": "&lt;em&gt;.mydomain.com",
+  "AuthNegotiateDelegateWhitelist": "&lt;/em&gt;.mydomain.com" }&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Restart chrome and You are all set.&lt;/p&gt;</content><category term="kerberos"></category><category term="kerberos"></category><category term="google-chrome"></category><category term="auth"></category><category term="Linux"></category><category term="Fedora-22"></category></entry></feed>

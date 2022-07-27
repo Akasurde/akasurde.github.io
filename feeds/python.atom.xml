@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://akasurde.github.io - Python</title><link href="https://akasurde.github.io/" rel="alternate"></link><link href="https://akasurde.github.io/feeds/python.atom.xml" rel="self"></link><id>https://akasurde.github.io/</id><updated>2017-04-01T12:03:00+05:30</updated><subtitle>Developer, Hacker</subtitle><entry><title>Skip Python SSL verification check</title><link href="https://akasurde.github.io/python-ssl-verification.html" rel="alternate"></link><published>2017-04-01T12:03:00+05:30</published><updated>2017-04-01T12:03:00+05:30</updated><author><name>Abhijeet Kasurde</name></author><id>tag:akasurde.github.io,2017-04-01:/python-ssl-verification.html</id><summary type="html">&lt;p&gt;Skip Python SSL verification check&lt;/p&gt;</summary><content type="html">&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;If you want to skip Python SSL verification check then &lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ export PYTHONHTTPSVERIFY=0&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Python"></category><category term="python"></category><category term="cheat-sheet"></category><category term="openssl"></category></entry></feed>

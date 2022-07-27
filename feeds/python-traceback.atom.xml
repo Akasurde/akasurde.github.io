@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://akasurde.github.io - Python, traceback</title><link href="https://akasurde.github.io/" rel="alternate"></link><link href="https://akasurde.github.io/feeds/python-traceback.atom.xml" rel="self"></link><id>https://akasurde.github.io/</id><updated>2017-01-16T12:03:00+05:30</updated><subtitle>Developer, Hacker</subtitle><entry><title>Python - Traceback module</title><link href="https://akasurde.github.io/python-traceback-module.html" rel="alternate"></link><published>2017-01-16T12:03:00+05:30</published><updated>2016-01-16T12:03:00+05:30</updated><author><name>Abhijeet Kasurde</name></author><id>tag:akasurde.github.io,2017-01-16:/python-traceback-module.html</id><summary type="html">&lt;p&gt;Python - Traceback module&lt;/p&gt;</summary><content type="html">&lt;p&gt;How to print current call stack for debugging purpose&lt;/p&gt;
+&lt;pre&gt;import traceback
+def f():
+    g()
+def g():
+    for line in traceback.format_stack():
+        print(line.strip())
+f()&lt;/pre&gt;
+
+&lt;p&gt;It gives output as follows : &lt;/p&gt;
+&lt;pre&gt;
+# Prints:
+# File "example_tracestack.py", line 10, in &lt;module&gt;
+#     f()
+# File "example_tracestack.py", line 4, in f
+#     g()
+# File "exampel_tracestack.py", line 7, in g
+#     for line in traceback.format_stack():&lt;/pre&gt;</content><category term="Python, traceback"></category><category term="Python"></category><category term="Traceback"></category><category term="module"></category></entry></feed>

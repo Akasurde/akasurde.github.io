@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://akasurde.github.io - bash, scripting, command line</title><link href="https://akasurde.github.io/" rel="alternate"></link><link href="https://akasurde.github.io/feeds/bash-scripting-command-line.atom.xml" rel="self"></link><id>https://akasurde.github.io/</id><updated>2016-06-07T12:03:00+05:30</updated><subtitle>Developer, Hacker</subtitle><entry><title>Bash Scripting Syntax</title><link href="https://akasurde.github.io/bash-syntax-cheat-sheet.html" rel="alternate"></link><published>2016-06-07T12:03:00+05:30</published><updated>2016-06-07T12:03:00+05:30</updated><author><name>Abhijeet Kasurde</name></author><id>tag:akasurde.github.io,2016-06-07:/bash-syntax-cheat-sheet.html</id><summary type="html">&lt;p&gt;Bash scripting syntax cheatsheet&lt;/p&gt;</summary><content type="html">&lt;ul&gt;
+&lt;li&gt;Compare integer in bash, (for avoiding error : &lt;code&gt;unary operator expected error&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;
+if [[ $i -ge 2 ]]
+&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Number tables (for loop example)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;
+for i in {1..9};
+do
+    for j in $(seq 1 9);
+    do
+        echo -ne $i×$j=$((i*j))\\t;
+    done;
+    echo;
+done
+&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Test of variable is a number in bash shell script&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;
+re='^[0-9]+$'
+if ! [[ $yournumber =~ $re ]] ; then
+    echo "error: Not a number" &gt;&amp;2;
+    exit 1
+fi
+&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Remove last character of variable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;
+something="myname"
+echo ${something%?}
+&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Removing first character of variable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;
+something="myname"
+echo ${something#?}
+&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Using nested variable in bash&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;
+array=(1 2 3 4 5)
+for i in ${array[@]}
+do
+    v=$(printf "str%s" $i)
+    echo $v
+done
+&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Redirecting eval to log file&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;
+eval ls 2&gt;&amp;1 &gt; /tmp/av.log
+&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Converting variable string into lower case using bash&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;
+REALM="Sample.Example.COM"
+echo $REALM
+echo ${REALM,,}
+&lt;/pre&gt;</content><category term="bash, scripting, command line"></category><category term="bash"></category><category term="shell"></category><category term="scripting"></category><category term="command line"></category></entry></feed>

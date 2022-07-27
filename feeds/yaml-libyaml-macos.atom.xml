@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://akasurde.github.io - yaml, libyaml, macos</title><link href="https://akasurde.github.io/" rel="alternate"></link><link href="https://akasurde.github.io/feeds/yaml-libyaml-macos.atom.xml" rel="self"></link><id>https://akasurde.github.io/</id><updated>2020-05-13T12:03:00+05:30</updated><subtitle>Developer, Hacker</subtitle><entry><title>Installing Pyyaml with libyaml support on MacOS</title><link href="https://akasurde.github.io/installing-pyyaml-with-libyaml-on-macos.html" rel="alternate"></link><published>2020-05-13T12:03:00+05:30</published><updated>2020-05-13T12:03:00+05:30</updated><author><name>Abhijeet Kasurde</name></author><id>tag:akasurde.github.io,2020-05-13:/installing-pyyaml-with-libyaml-on-macos.html</id><summary type="html">&lt;p&gt;Installing Pyyaml with libyaml support on MacOS&lt;/p&gt;</summary><content type="html">&lt;p&gt;I faced issue while installing Pyyaml with libyaml support on Mac OS Mojave. But I was able to successfully install at the end. Here, are some instructions&lt;/p&gt;
+&lt;pre&gt;
+# wget https://github.com/yaml/pyyaml/archive/5.3.1.zip
+# unzip pyyaml-5.3.1.zip
+# cd pyyaml-5.3.1
+&lt;/pre&gt;
+
+&lt;p&gt;If you run &lt;code&gt;make&lt;/code&gt; without &lt;code&gt;cython&lt;/code&gt; package you will get the following error -&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;clang&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;no&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;such&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;directory&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ext/_yaml.c&amp;#39;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;In order to rectify this error -&lt;/p&gt;
+&lt;pre&gt;
+# pip install cython
+&lt;/pre&gt;
+
+&lt;p&gt;You will need libyaml header files as well, you can install this -&lt;/p&gt;
+&lt;pre&gt;
+# brew install libyaml
+&lt;/pre&gt;
+
+&lt;p&gt;Finally, include &lt;code&gt;LDFLAGS&lt;/code&gt; and &lt;code&gt;CFLAGS&lt;/code&gt; to use custom location for make command like -&lt;/p&gt;
+&lt;pre&gt;
+# LDFLAGS="-L/usr/local/lib/" CFLAGS="-I/usr/local/Cellar/libyaml/0.2.2/include" make installext
+&lt;/pre&gt;
+
+&lt;p&gt;You will be greeted with success message like -&lt;/p&gt;
+&lt;pre&gt;
+running install_egg_info
+Writing /Volumes/data/venv3.8/lib/python3.8/site-packages/PyYAML-5.3.1-py3.8.egg-info
+&lt;/pre&gt;
+
+&lt;p&gt;Let me know if you need any help.&lt;/p&gt;</content><category term="yaml, libyaml, macos"></category><category term="macos"></category><category term="ansible"></category><category term="yaml"></category><category term="command-line"></category></entry></feed>

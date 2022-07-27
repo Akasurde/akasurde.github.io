@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://akasurde.github.io - apt-get</title><link href="https://akasurde.github.io/" rel="alternate"></link><link href="https://akasurde.github.io/feeds/apt-get.atom.xml" rel="self"></link><id>https://akasurde.github.io/</id><updated>2016-05-01T12:03:00+05:30</updated><subtitle>Developer, Hacker</subtitle><entry><title>Apt-get</title><link href="https://akasurde.github.io/apt-get-cheat-sheet.html" rel="alternate"></link><published>2016-05-01T12:03:00+05:30</published><updated>2016-05-01T12:03:00+05:30</updated><author><name>Abhijeet Kasurde</name></author><id>tag:akasurde.github.io,2016-05-01:/apt-get-cheat-sheet.html</id><summary type="html">&lt;p&gt;Apt-get command info&lt;/p&gt;</summary><content type="html">&lt;p&gt;Quick Guide to &lt;code&gt;apt-get&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;apt-get update&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This retrieves the current list of packages from all servers in your &lt;code&gt;sources.list&lt;/code&gt;.
+  If you don't do this from time to time your local list of available packages may become out of date.
+  Do this occasionally before doing a &lt;code&gt;dist-upgrade&lt;/code&gt; or searching for a new package.
+  The package lists are large: doing an update may result in several MB of data being retrieved from the Internet.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;apt-cache search program&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This will do a keyword search through the list of available packages, including package names and descriptions.
+  You can put in several keywords, for example &lt;code&gt;apt-cache search text editor&lt;/code&gt; to find a list of text editors.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;apt-cache show program&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Once you've found a package that looks interesting using &lt;code&gt;apt-cache search&lt;/code&gt;,you can display more detailed information about it using &lt;code&gt;apt-cache show program&lt;/code&gt;.
+  This will tell you things like the size of the package (important if you are installing it off the Internet) and
+  an extended description, as well as what other packages it depends on in order to work and the name of the developer who maintains the package.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;apt-get install program&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This will get the latest version of the specified package and install it, along with any other packages that it depends on in order to work.
+  If the requested package is already installed, this will upgrade it to the latest available version.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;apt-get remove program&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you've previously installed a program and decide you don't want it anymore, you can remove it using this command.
+  Because some software packages can depend on others, removing one program may break other programs.
+  Running &lt;code&gt;apt-get remove&lt;/code&gt; therefore checks first to see if any other software needs the program to work, and uninstalls them as well.
+  This is just one example of the way the Debian package management tools have been designed to try to keep your computer in a sane state, without broken or half-installed software.
+  It's certainly possible to break a Debian system, but generally you have to try to do it.
+  It's unlikely you could do it by mistake.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;apt-get upgrade&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Over time, most of the software packages on your computer will become out of date as new versions are released to add features or fix bugs.
+  You could manually do &lt;code&gt;apt-get install foo&lt;/code&gt; on each one, but that's not very convenient, so Apt provides a simple way to upgrade your entire system at once.
+  Just type &lt;code&gt;apt-get upgrade&lt;/code&gt; to have Apt check every single package on your system for a new version, then download and install it.
+  This command will never install new packages, it will only upgrade packages that are already installed.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;apt-get dist-upgrade&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Sometimes you'll have a software package installed, and a new version will come out that has a lot of new features and therefore it now depends on some other program to run.
+  For example, you may have a movie player installed that supports a lot of different movie formats. When new formats come out, modules for those formats may be added in separate packages, so the latest version of the movie player software now depends on a new package that you don't yet have installed on your system.
+  If you just do &lt;code&gt;apt-get upgrade&lt;/code&gt;, you'll get the latest movie player, but you won't get all the new format packages. The &lt;code&gt;apt-get dist-upgrade&lt;/code&gt; command solves that problem for you: not only does it get the latest version of every package already installed just like &lt;code&gt;apt-get upgrade&lt;/code&gt;,it also installs any new packages they need that may not be on your system yet.
+  If you want to keep your system up to date with all the latest updates and security patches, running &lt;code&gt;apt-get update; apt-get dist-upgrade&lt;/code&gt; from time to time is the best way to do it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;apt-get clean&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When you ask Apt to install a software package, it downloads the package and stores it in a cache on your disk before it does the actual installation.
+  If you then remove the package, but later change your mind again and re-install it, Apt doesn't need to fetch it off the Internet again because the package is sitting in the local cache.
+  That's great for saving bandwidth, but after a while it can use up space on your disk so it's a good idea to periodically delete old packages from the cache.
+  Running &lt;code&gt;apt-get clean&lt;/code&gt; will totally flush the package cache, possibly freeing up some precious disk space.
+  Running this command is quite safe, because the worst that can happen is Apt may need to download a package again if you remove it then re-install it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;apt-get autoclean&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is almost the same as &lt;code&gt;apt-get clean&lt;/code&gt;, except it's just a little bit smarter: instead of cleaning out your entire package cache, it deletes only superseded packages.
+  For example, your package cache may contain packages for the last 7 versions of a text editor that has been upgraded a number of times: running &lt;code&gt;apt-cache autoclean&lt;/code&gt; will delete the oldest 6 versions from the cache, leaving only the latest one.
+  That makes sense because you're not likely to re-install anything except the latest version anyway.
+  This is also a very safe command to run, so if you're a bit tight on disk space and don't want your package cache growing too much you could put it in a Cron job to do an automatic cleanup from time to time.
+  There's really no reason to keep the older packages lying around on disk anyway.&lt;/p&gt;</content><category term="apt-get"></category><category term="apt-get"></category><category term="cheatsheet"></category></entry></feed>

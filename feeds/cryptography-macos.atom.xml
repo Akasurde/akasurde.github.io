@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://akasurde.github.io - cryptography, macos</title><link href="https://akasurde.github.io/" rel="alternate"></link><link href="https://akasurde.github.io/feeds/cryptography-macos.atom.xml" rel="self"></link><id>https://akasurde.github.io/</id><updated>2017-08-14T12:03:00+05:30</updated><subtitle>Developer, Hacker</subtitle><entry><title>Installing Cryptography in MacOS</title><link href="https://akasurde.github.io/installing-cryptography-in-macos.html" rel="alternate"></link><published>2017-08-14T12:03:00+05:30</published><updated>2017-08-14T12:03:00+05:30</updated><author><name>Abhijeet Kasurde</name></author><id>tag:akasurde.github.io,2017-08-14:/installing-cryptography-in-macos.html</id><summary type="html">&lt;p&gt;Installing cryptography in MacOS&lt;/p&gt;</summary><content type="html">&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;If you face error while installing Cryptography in MacOS then use following command ::&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;
+pip install cryptography --global-option=build_ext --global-option="-L/usr/local/opt/openssl/lib" --global-option="-I/usr/local/opt/openssl/include"
+&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="cryptography, macos"></category><category term="macos"></category><category term="cryptography"></category><category term="command-line"></category></entry></feed>

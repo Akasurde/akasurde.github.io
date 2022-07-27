@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://akasurde.github.io - digispark, open-hardware, arduino</title><link href="https://akasurde.github.io/" rel="alternate"></link><link href="https://akasurde.github.io/feeds/digispark-open-hardware-arduino.atom.xml" rel="self"></link><id>https://akasurde.github.io/</id><updated>2016-05-04T12:03:00+05:30</updated><subtitle>Developer, Hacker</subtitle><entry><title>Connect and program Digispark using Fedora 22 Linux</title><link href="https://akasurde.github.io/connect-digispark.html" rel="alternate"></link><published>2016-05-04T12:03:00+05:30</published><updated>2016-05-04T12:03:00+05:30</updated><author><name>Abhijeet Kasurde</name></author><id>tag:akasurde.github.io,2016-05-04:/connect-digispark.html</id><summary type="html">&lt;p&gt;In this tutorial, we will connect and program Digispark using Fedora 22 Linux&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Installation Procedures:&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Download &lt;a href="https://www.arduino.cc"&gt;Arduino&lt;/a&gt; software from &lt;a href="https://www.arduino.cc/en/Main/Software"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Unzip Arduino software package&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;$ tar xf arduino-1.6.8-linux64.tar.xz&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="digispark, open-hardware, arduino"></category><category term="digispark"></category><category term="open-hardware"></category><category term="arduino"></category></entry></feed>

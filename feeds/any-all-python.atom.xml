@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://akasurde.github.io - any, all, python</title><link href="https://akasurde.github.io/" rel="alternate"></link><link href="https://akasurde.github.io/feeds/any-all-python.atom.xml" rel="self"></link><id>https://akasurde.github.io/</id><updated>2017-09-01T12:03:00+05:30</updated><subtitle>Developer, Hacker</subtitle><entry><title>Any and All</title><link href="https://akasurde.github.io/any-all-python.html" rel="alternate"></link><published>2017-09-01T12:03:00+05:30</published><updated>2017-09-01T12:03:00+05:30</updated><author><name>Abhijeet Kasurde</name></author><id>tag:akasurde.github.io,2017-09-01:/any-all-python.html</id><summary type="html">&lt;p&gt;Test truth values of iterable&lt;/p&gt;</summary><content type="html">&lt;p&gt;Python provides two functions that deal with iterable and return &lt;code&gt;True&lt;/code&gt; or &lt;code&gt;False&lt;/code&gt;
+depending on which boolean values elements of the sequence evaluate to.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;All&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;all(iterable)&lt;/code&gt; returns &lt;code&gt;True&lt;/code&gt; if all elements of an iterable are considered as true values &lt;/p&gt;
+&lt;p&gt;e.g., &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;all&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;y&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Python&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# Returns False. Not all of the letters are &amp;#39;y&amp;#39;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Any&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;any(iterable)&lt;/code&gt; returns &lt;code&gt;True&lt;/code&gt; if at least one element of the iterable is a true value&lt;/p&gt;
+&lt;p&gt;e.g.,&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;any&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;t&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;python&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# Returns True. Same as: &amp;#39;t&amp;#39; in &amp;#39;python&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="any, all, python"></category><category term="any"></category><category term="all"></category><category term="python"></category></entry></feed>

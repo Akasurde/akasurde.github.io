@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://akasurde.github.io - Windows Active Directory, Commandline</title><link href="https://akasurde.github.io/" rel="alternate"></link><link href="https://akasurde.github.io/feeds/windows-active-directory-commandline.atom.xml" rel="self"></link><id>https://akasurde.github.io/</id><updated>2016-07-05T12:03:00+05:30</updated><subtitle>Developer, Hacker</subtitle><entry><title>Windows AD Command line cheatsheet</title><link href="https://akasurde.github.io/windows-ad-cheat-sheet.html" rel="alternate"></link><published>2016-07-05T12:03:00+05:30</published><updated>2016-07-05T12:03:00+05:30</updated><author><name>Abhijeet Kasurde</name></author><id>tag:akasurde.github.io,2016-07-05:/windows-ad-cheat-sheet.html</id><summary type="html">&lt;p&gt;Windows AD Command line - Cheatsheet&lt;/p&gt;</summary><content type="html">&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Query AD objects using command line &lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;C:\&amp;gt;dsquery user&lt;/pre&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Windows Active Directory, Commandline"></category><category term="commandline"></category><category term="Windows AD"></category></entry></feed>

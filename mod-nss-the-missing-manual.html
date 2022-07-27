@@ -3,12 +3,13 @@
 <head>
   <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+    <link rel="stylesheet" type="text/css" href="https://akasurde.github.io/theme/stylesheet/style.min.css">
 
-  <link rel="stylesheet" type="text/css" href="/theme/stylesheet/pygments.min.css">
-  <link rel="stylesheet" type="text/css" href="/theme/stylesheet/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://akasurde.github.io/theme/stylesheet/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="https://akasurde.github.io/theme/stylesheet/font-awesome.min.css">
 
 
+    <link href="https://akasurde.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="https://akasurde.github.io Atom">
 
 
 
@@ -19,37 +20,38 @@
 <meta name="author" content="Abhijeet Kasurde" />
 <meta name="description" content="The missing manual - mod-nss" />
 <meta name="keywords" content="mod-nss">
-<meta property="og:site_name" content="http://akasurde.github.io"/>
+<meta property="og:site_name" content="https://akasurde.github.io"/>
 <meta property="og:title" content="The missing manual - mod-nss"/>
 <meta property="og:description" content="The missing manual - mod-nss"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="/mod-nss-the-missing-manual.html"/>
+<meta property="og:url" content="https://akasurde.github.io/mod-nss-the-missing-manual.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2017-01-13 12:03:00+05:30"/>
 <meta property="article:modified_time" content="2017-01-13 12:03:00+05:30"/>
-<meta property="article:author" content="/author/abhijeet-kasurde.html">
+<meta property="article:author" content="https://akasurde.github.io/author/abhijeet-kasurde.html">
 <meta property="article:section" content="mod-nss"/>
 <meta property="article:tag" content="mod-nss"/>
 <meta property="og:image" content="https://pbs.twimg.com/profile_images/598341193336954882/HHxz7Y7G.png">
-  <title>http://akasurde.github.io &ndash; The missing manual - mod-nss</title>
+  <title>https://akasurde.github.io &ndash; The missing manual - mod-nss</title>
 </head>
 <body>
   <aside>
     <div>
-      <a href="">
-        <img src="https://pbs.twimg.com/profile_images/598341193336954882/HHxz7Y7G.png" alt="Abhijeet Kasurde" title="Abhijeet Kasurde">
+      <a href="https://akasurde.github.io">
+        <img src="https://pbs.twimg.com/profile_images/598341193336954882/HHxz7Y7G.png" alt="" title="">
       </a>
-      <h1><a href="">Abhijeet Kasurde</a></h1>
+      <h1><a href="https://akasurde.github.io"></a></h1>
       <p>Developer, Hacker</p>
       <nav>
         <ul class="list">
           <li><a href="https://akasurde.github.io">Home</a></li>
-          <li><a href="/pages/about.html#about">About</a></li>
-          <li><a href="/pages/contact.html#contact">Contact</a></li>
-          <li><a href="/pages/good-reads.html#good-reads">Good Reads</a></li>
-          <li><a href="/pages/open-source-for-you.html#open-source-for-you">Open Source For You</a></li>
-          <li><a href="/pages/projects.html#projects">Projects</a></li>
-          <li><a href="/pages/slidedecks.html#slidedecks">Slide Deck</a></li>
+          <li><a href="https://akasurde.github.io/pages/about.html#about">About</a></li>
+          <li><a href="https://akasurde.github.io/pages/contact.html#contact">Contact</a></li>
+          <li><a href="https://akasurde.github.io/pages/good-reads.html#good-reads">Good Reads</a></li>
+          <li><a href="https://akasurde.github.io/pages/open-source-for-you.html#open-source-for-you">Open Source For You</a></li>
+          <li><a href="https://akasurde.github.io/pages/projects.html#projects">Projects</a></li>
+          <li><a href="https://akasurde.github.io/pages/slidedecks.html#slidedecks">Slide Deck</a></li>
+          <li><a href="http://opensourceforu.com/author/abhijeet-kasurde/" target="_blank">Open Source For You</a></li>
         </ul>
       </nav>
       <ul class="social">
@@ -65,7 +67,7 @@
 <article>
   <header>
     <h1 id="mod-nss-the-missing-manual">The missing manual - mod-nss</h1>
-    <p>Posted on Fri 13 January 2017 in <a href="/category/mod-nss.html">mod-nss</a></p>
+    <p>Posted on Fri 13 January 2017 in <a href="https://akasurde.github.io/category/mod-nss.html">mod-nss</a></p>
   </header>
   <div>
     <h1>mod_nss</h1>
@@ -127,9 +129,10 @@
 <p>If <code>--with-nss</code> or <code>--with-nspr</code> are not passed configure will look for the <code>[nss|nspr]-devel</code> packages and use the libraries with that if found.</p>
 <p>It is strongly recommended that the mozilla.org version be used.</p>
 <p>Build and install those packages somewhere then configure the module with something like:</p>
-<p><pre>
+<pre>
   % ./configure --with-apxs=/path/to/apxs/ --with-nspr=/path/to/nspr/ --with-nss=/path/to/nss/
-  % gmake</pre></p>
+  % gmake</pre>
+
 <p>This will create a sample configuration file nss.conf. By default this is installed during the installation process.</p>
 <h2>Installation</h2>
 <p>The make install target uses apxs to install the module into Apache.</p>
@@ -137,29 +140,33 @@
 <p>It also tries to rename ssl.conf to ssl.conf.old.</p>
 <p>The assumption is that mod_nss is replacing mod_ssl. They can co-exist as long as they are listening on separate ports.</p>
 <p>The mod_nss configuration file, nss.conf, is copied into the Apache configuration directory (as reported by apxs). You may need to make a manual change to httpd.conf to load this file. If you have a Red Hat-style Apache installation with a conf.d just move <code>nss.conf</code> there. It will be automatically loaded. Otherwise you will need to add the following line to <code>httpd.conf</code> (location relative to <code>httpd.conf</code>):</p>
-<div class="highlight"><pre><span></span><code><span class="err">Include conf/nss.conf</span>
+<div class="highlight"><pre><span></span><code><span class="k">Include</span> <span class="nv">conf</span><span class="o">/</span><span class="nv">nss</span>.<span class="nv">conf</span>
 </code></pre></div>
-
 
 <p>This has Apache load the <code>mod_nss</code> configuration file, <code>nss.conf</code>. It is here that you will setup your VirtualServer entries to and configure your SSL servers. If you have a certificate with Subject Alternative Names then you can configure separate VirtualServer entries for eacon one.
 Certificate Generation</p>
 <p>A ksh script, <code>gencert</code>, is included to automatically generate a self-signed CA plus one server certificate. This is fine for testing purposes but it is strongly recommended that a real server certificate be obtained from a real CA before moving a <code>mod_nss</code> server into production. Users should be expected to cancel any request to a secure server signed by an unknown issuer.</p>
 <p><code>gencert</code> takes one argument, the path to the location of the certificate database. A fair amount of output is generated so you can follow what is going on. For the most part most don't need to bother with the details.</p>
 <p>The certificate database password is httptest.</p>
-<p>A sample run is:
+<p>A sample run is:</p>
 <pre>
   # mkdir /etc/httpd/nss
-  # ./gencert /etc/httpd/nss</p>
-<p>#####################################################################
+  # ./gencert /etc/httpd/nss
+
+  #####################################################################
   Generating new server certificate and key database. The password
   is httptest
-  #####################################################################</p>
-<p>#####################################################################
+  #####################################################################
+
+  #####################################################################
   Generating self-signed client CA certificate
-  #####################################################################</p>
-<p>Generating key.  This may take a few moments...</p>
-<p>[ Lots of output removed ]
-</pre></p>
+  #####################################################################
+
+  Generating key.  This may take a few moments...
+
+  [ Lots of output removed ]
+</pre>
+
 <p>You should now have the following files:</p>
 <ul>
 <li>/etc/httpd/nss/cert8.db</li>
@@ -176,9 +183,10 @@ Certificate Generation</p>
 <h2>Server Startup</h2>
 <p>Starting a <code>mod_nss</code> server is no different than starting a <code>mod_ssl</code> server. You will need to authenticate yourself to the security token (e.g. enter the key password). The sample <code>nss.conf</code> is not included in an <IfDefine SSL> so you do not need to use the startssl argument with apachectl.</p>
 <p>A sample startup might look like:</p>
-<p><pre> % apachectl start
+<pre> % apachectl start
   Please enter password for "internal" token:
-  </pre></p>
+  </pre>
+
 <p>If you have additional hardware tokens you will be prompted for each token password.</p>
 <p>All other output will be written to the Apache log files.</p>
 <p>To avoid being prompted for a startup password you can either:</p>
@@ -190,7 +198,8 @@ Certificate Generation</p>
 <p>Exec a program which provides the token password (either by asking the user or other means. Change the internal token password to a blank with:</p>
 </li>
 </ul>
-<p><pre> % modutil -dbdir /path/to/database/directory -changepw "NSS Certificate DB" </pre></p>
+<pre> % modutil -dbdir /path/to/database/directory -changepw "NSS Certificate DB" </pre>
+
 <p>Enter the old password then press Enter twice for the new password to blank it out.</p>
 <h2>Migration</h2>
 <p>A perl script, <code>migrate.pl</code>, is included to help migrate an existing <code>mod_ssl</code> configuration to work with <code>mod_nss</code>. There is one optional argument, <code>-c</code>, that will try to convert your existing server and CA certificates plus any certificate revocation lists (CRLs) into an NSS certificate database.</p>
@@ -218,27 +227,31 @@ Certificate Generation</p>
 <p>The token password(s) may be stored in an ASCII text file which is read during startup so the server can start without user intervention. The format of this file is:</p>
 <p><code>token:password</code></p>
 <p>An example for the internal token is:</p>
-<p><pre>
+<pre>
   internal:secret12
-  exec:/path/to/executable</pre></p>
+  exec:/path/to/executable</pre>
+
 <p>The listed program will be executed. The only argument is the NSS token name to be authenticated. The return value of the program is ignored. Only what is printed on stdout is passed along as the password.</p>
 <p>A trivial example script is:</p>
-<p><pre>
+<pre>
   #!/bin/sh
   echo "secret123"
-  </pre></p>
+  </pre>
+
 <p>To prompt using systemd (as root):</p>
-<p><pre>
+<pre>
   #!/bin/sh
   exec /bin/systemd-ask-password "Enter SSL pass phrase for $1: "
-  </pre></p>
+  </pre>
+
 <ul>
 <li><em>Example</em></li>
 </ul>
-<p><pre>
+<pre>
   NSSPassPhraseDialog builtin
   NSSPassPhraseDialog file:/etc/httpd/alias/password.conf
-  NSSPassPhraseDialog exec:/usr/libexec/httpd/httpd-ssl-pass-dialog</pre></p>
+  NSSPassPhraseDialog exec:/usr/libexec/httpd/httpd-ssl-pass-dialog</pre>
+
 <hr>
 <ul>
 <li>NSSPassPhraseHelper</li>
@@ -246,7 +259,8 @@ Certificate Generation</p>
 <p>When Apache starts it loads and unloads any modules that aren't built-in twice. It loads them once so it can verify that the configuration is ok and then it unloads them and re-loads them again when the server is actually ready to receive connections. After the first module load Apache closes access to the terminal so there is no way to prompt for the NSS token passwords (it would also be annoying to have to authenticate twice). Because the module is loaded and unloaded the NSS certificate database needs to be loaded and unloaded as well, causing any pins entered during the first load to be lost and causing the server to be unstartable.</p>
 <p>The solution is the PassPhraseHelper. This is a stand-alone program that also opens the NSS certificate database and stores a copy of the encrypted token password entered during the first load of the NSS module. When mod_nss needs to open the certificate database during subsequent reloads it queries the PassPhraseHelper for the token password.</p>
 <p>Example</p>
-<p><pre>NSSPassPhraseHelper /path/to/nss_pcache</pre></p>
+<pre>NSSPassPhraseHelper /path/to/nss_pcache</pre>
+
 <hr>
 <ul>
 <li>NSSCertificateDatabase</li>
@@ -254,15 +268,17 @@ Certificate Generation</p>
 <p>Specifies the location of the NSS certificate database to be used. An NSS certificate database consists of 3 files: <code>cert8.db</code>, <code>key3.db</code> and <code>secmod.db</code>. <code>cert8.db</code> stores certificates and Certificate Revocation Lists (CRLs), <code>key3.db</code> stores keys and <code>secmod.db</code> stores information about available PKCS#11 modules.</p>
 <p>This directive specifies a path, not a filename. To use a sqlite NSS database include the prefix sql: in the path.</p>
 <p>Example</p>
-<p><pre>NSSCertificateDatabase /etc/httpd/conf/nss
-  NSSCertificateDatabase sql:/etc/httpd/conf/nss</pre></p>
+<pre>NSSCertificateDatabase /etc/httpd/conf/nss
+  NSSCertificateDatabase sql:/etc/httpd/conf/nss</pre>
+
 <hr>
 <ul>
 <li>NSSDBPrefix</li>
 </ul>
 <p>Normally a certificate database consists of 3 files: <code>cert8.db</code>, <code>key3.db</code> and <code>secmod.db</code>. This directive allows you to add a named prefix to the filenames of <code>cert8.db</code> and <code>key3.db</code> so you can store multiple databases in one directory.</p>
 <p>Example</p>
-<p><pre> NSSDBPrefix my-prefix-</pre></p>
+<pre> NSSDBPrefix my-prefix-</pre>
+
 <p>You would then need: <code>my-prefix-cert8.db</code>, <code>my-prefix-key3.db</code> and <code>secmod.db</code></p>
 <p>In order to work with files with a prefix using the NSS command-line tools use the -P flag.</p>
 <hr>
@@ -273,7 +289,8 @@ Certificate Generation</p>
 <p>There is no upper limit.</p>
 <p>The default value is 10000.</p>
 <p>Example</p>
-<p><pre>NSSSessionCacheSize 10000</pre></p>
+<pre>NSSSessionCacheSize 10000</pre>
+
 <hr>
 <ul>
 <li>NSSSessionCacheTimeout</li>
@@ -287,7 +304,8 @@ Certificate Generation</p>
 <p>The valid range is 5 - 86400 seconds. A setting outside the valid range is silently constrained.</p>
 <p>The default value is 86400 (24 hours).</p>
 <p>Example</p>
-<p><pre>NSSSession3CacheTimeout 86400</pre></p>
+<pre>NSSSession3CacheTimeout 86400</pre>
+
 <hr>
 <ul>
 <li>NSSRandomSeed</li>
@@ -298,16 +316,18 @@ Certificate Generation</p>
   file:/path/to/source: Reads from the specified file. If the number of bytes to read is specified it just reads that amount. Be aware that some operating systems block on /dev/random if not enough entropy is available. This means that the server will wait until that data is available to continue startup. These systems generally offer a non-blocking device as well, /dev/urandom.
   exec:/path/to/program: Executes the given program and takes the stdout of it as the entropy. If the bytes argument is included it reads that many bytes, otherwise it reads until the program exits.</p>
 <p>Example</p>
-<p><pre>NSSRandomSeed startup builtin
+<pre>NSSRandomSeed startup builtin
   NSSRandomSeed startup /dev/urandom 512
-  NSSRandomSeed startup /usr/bin/makerandom</pre></p>
+  NSSRandomSeed startup /usr/bin/makerandom</pre>
+
 <hr>
 <ul>
 <li>NSSSkipPermissionCheck</li>
 </ul>
 <p>The NSS database will be checked to ensure that the user configured to run Apache as has owner or group read access to the database configured in NSSCertificateDatabase. This check can be disabled by setting NSSSkipPermissionCheck to on. The default is off</p>
 <p>Example</p>
-<p><pre>NSSSkipPermissionCheck on</pre></p>
+<pre>NSSSkipPermissionCheck on</pre>
+
 <hr>
 <ul>
 <li>NSSEngine</li>
@@ -315,7 +335,8 @@ Certificate Generation</p>
 <p>Enables or disables the SSL protocol. This is usually used within a VirtualHost tag to enable SSL for a particular virtual host.</p>
 <p>SSL is disabled by default.</p>
 <p>Example</p>
-<p><pre>NSSEngine on</pre></p>
+<pre>NSSEngine on</pre>
+
 <hr>
 <ul>
 <li>NSSFIPS</li>
@@ -348,7 +369,8 @@ Certificate Generation</p>
 </ul>
 <p>FIPS is disabled by default.</p>
 <p>Example</p>
-<p><pre>NSSFIPS on</pre></p>
+<pre>NSSFIPS on</pre>
+
 <hr>
 <ul>
 <li>NSSOCSP</li>
@@ -356,7 +378,8 @@ Certificate Generation</p>
 <p>Enables or disables OCSP (Online Certificate Status Protocol). This allows the server to check the validity of a client certificate before accepting it.</p>
 <p>OCSP is disabled by default.</p>
 <p>Example</p>
-<p><pre>NSSOCSP on</pre></p>
+<pre>NSSOCSP on</pre>
+
 <hr>
 <ul>
 <li>NSSCipherSuite</li>
@@ -721,10 +744,11 @@ Certificate Generation</p>
 </tbody>
 </table>
 <p>Example</p>
-<p><pre>NSSCipherSuite +rsa_3des_sha,-rsa_des_56_sha,+rsa_des_sha,-rsa_null_md5,-rsa_null_sha,-rsa_rc2_40_md5,+rsa_rc4_128_md5,-rsa_rc4_128_sha,-rsa_rc4_40_md5,-rsa_rc4_56_sha,-fips_des_sha, +fips_3des_sha,-rsa_aes_128_sha,-rsa_aes_256_sha
+<pre>NSSCipherSuite +rsa_3des_sha,-rsa_des_56_sha,+rsa_des_sha,-rsa_null_md5,-rsa_null_sha,-rsa_rc2_40_md5,+rsa_rc4_128_md5,-rsa_rc4_128_sha,-rsa_rc4_40_md5,-rsa_rc4_56_sha,-fips_des_sha, +fips_3des_sha,-rsa_aes_128_sha,-rsa_aes_256_sha
 NSSCipherSuite ALL
 NSSCipherSuite rsa_3des_sha
-NSSCipherSuite RC4-SHA</pre></p>
+NSSCipherSuite RC4-SHA</pre>
+
 <hr>
 <ul>
 <li>NSSProtocol</li>
@@ -745,15 +769,17 @@ NSSCipherSuite RC4-SHA</pre></p>
 <p>Finally, NSS will always automatically negotiate the use of the strongest possible protocol that has been specified which is acceptable to both sides of a given connection.
   SSLv2 is not supported by default at this time.</p>
 <p>Example</p>
-<p><pre>NSSProtocol SSLv3,TLSv1.0,TLSv1.1</pre></p>
+<pre>NSSProtocol SSLv3,TLSv1.0,TLSv1.1</pre>
+
 <hr>
 <ul>
 <li>NSSNickname</li>
 </ul>
 <p>Specify the nickname to be used for this the server certificate. Certificates stored in an NSS database are referred to using nicknames which makes accessing a specific certificate much easier. It is also possible to specify the certificate DN but it is easier to use a nickname. If the nickname includes spaces then the value needs to be enclosed in double quotes.</p>
 <p>Example</p>
-<p><pre>NSSNickname Server-Cert
-NSSNickname "This contains a space"</pre></p>
+<pre>NSSNickname Server-Cert
+NSSNickname "This contains a space"</pre>
+
 <p><strong>NOTE</strong>: There is nothing magical about the string "Server-Cert." A nickname can be anything. Historically this was Server-Cert in the Netscape server products that used NSS.</p>
 <hr>
 <ul>
@@ -768,7 +794,8 @@ NSSNickname "This contains a space"</pre></p>
 </ul>
 <p>By default mod_nss will not start up if the server certificate is not valid. This means that if the certificate has expired or is signed by a CA that is not trusted in the NSS certificate database the server will not start. If you would like the server to start anyway you can add this directive to nss.conf and the server will start with just a warning. Not enforcing a valid server certificate is not recommended.</p>
 <p>Example</p>
-<p><pre>NSSEnforceValidCerts on</pre></p>
+<pre>NSSEnforceValidCerts on</pre>
+
 <hr>
 <ul>
 <li>NSSVerifyClient</li>
@@ -783,21 +810,24 @@ NSSNickname "This contains a space"</pre></p>
 <p>The mod_ssl option option_no_ca is not supported.</p>
 <p>There is no NSSVerifyDepth directive. NSS always verifies the entire certificate chain.</p>
 <p>Example</p>
-<p><pre>NSSVerifyClient require</pre></p>
+<pre>NSSVerifyClient require</pre>
+
 <hr>
 <ul>
 <li>NSSSessionTickets</li>
 </ul>
 <p>Enables or disables support for TLS Session tickets (RFC 5077). The default is off.</p>
 <p>Example</p>
-<p><pre>NSSSessionTickets on</pre></p>
+<pre>NSSSessionTickets on</pre>
+
 <hr>
 <ul>
 <li>NSSUserName</li>
 </ul>
 <p>Defines the field in the client certificate which will set the user field in the request. The option FakeBasicAuth (see NSSOptions) must also be set for this to work.</p>
 <p>Example</p>
-<p><pre>NSSUserName SSL_CLIENT_S_DN_UID</pre></p>
+<pre>NSSUserName SSL_CLIENT_S_DN_UID</pre>
+
 <hr>
 <ul>
 <li>NSSOptions</li>
@@ -813,24 +843,27 @@ NSSNickname "This contains a space"</pre></p>
 </ul>
 <p>All options are disabled by default.</p>
 <p>Example:</p>
-<p><pre>NSSOptions +FakeBasicAuth
-  &lt; Files ~ ".(cgi|shtml)$"&gt;
+<pre>NSSOptions +FakeBasicAuth
+  < Files ~ "\.(cgi|shtml)$">
   NSSOptions +StdEnvVars
-  &lt; Files&gt;</pre></p>
+  < Files></pre>
+
 <hr>
 <ul>
 <li>NSSRequireSSL</li>
 </ul>
 <p>The request is forbidden unless the connection is using SSL. Only available in a per-directory context. This takes no arguments.</p>
 <p>Example</p>
-<p><pre>NSSRequireSSL</pre></p>
+<pre>NSSRequireSSL</pre>
+
 <hr>
 <ul>
 <li>NSSRequire</li>
 </ul>
 <p>Provides a regular expression-based access-control mechanism. Access may be restricted (or allowed) based on any number of variables such as components of the client certificate, the remote IP address, etc.</p>
 <p>Example</p>
-<p><pre>NSSRequire</pre></p>
+<pre>NSSRequire</pre>
+
 <hr>
 <ul>
 <li>NSSRenegBufferSize</li>
@@ -838,56 +871,64 @@ NSSNickname "This contains a space"</pre></p>
 <p>Configure the amount of memory that will be used for buffering the request body if a per-location SSL renegotiation is required due to changed access control requirements. The value is in bytes. The default is 128K.
   If set to 0 then no buffering is done.</p>
 <p>Example</p>
-<p><pre>NSSRenegBufferSize 262144</pre></p>
+<pre>NSSRenegBufferSize 262144</pre>
+
 <hr>
 <ul>
 <li>NSSSNI</li>
 </ul>
 <p>Enables or disables Server Name Identification (SNI) extension check for TLS. This option is enabled by default. To disable SNI, set this to off in the default name-based VirtualHost.</p>
 <p>Example</p>
-<p><pre>NSSSNI off</pre></p>
+<pre>NSSSNI off</pre>
+
 <hr>
 <ul>
 <li>NSSStrictSNIVHostCheck</li>
 </ul>
 <p>Configures whether a non-SNI client is allowed to access a name-based VirtualHost. If set to on in the default name-based VirtualHost then clients that are SNI unaware cannot access any virtual host. If set to on in any other VirtualHost then SNI unaware clients cannot access this particular virtual host.</p>
 <p>Example</p>
-<p><pre>NSSStrictSNIVHostCheck off</pre></p>
+<pre>NSSStrictSNIVHostCheck off</pre>
+
 <hr>
 <ul>
 <li>NSSProxyEngine</li>
 </ul>
 <p>Enables or disables mod_nss HTTPS support for mod_proxy.</p>
 <p>Example</p>
-<p><pre>NSSProxyEngine on</pre></p>
+<pre>NSSProxyEngine on</pre>
+
 <hr>
 <ul>
 <li>NSSProxyProtocol</li>
 </ul>
 <p>Specifies the SSL protocols that may be used in proxy connections. The syntax is identical to NSSProtocol.</p>
 <p>Example</p>
-<p><pre>NSSProxyProtocol SSLv3</pre></p>
+<pre>NSSProxyProtocol SSLv3</pre>
+
 <hr>
 <ul>
 <li>NSSProxyCipherSuite</li>
 </ul>
 <p>Specifies the SSL ciphers available for proxy connections. The syntax is identical to NSSCipherSuite.</p>
 <p>Example</p>
-<p><pre>NSSProxyCipherSuite +rsa_3des_sha,-rsa_null_md5,-rsa_null_sha,+rsa_rc4_128_md5</pre></p>
+<pre>NSSProxyCipherSuite +rsa_3des_sha,-rsa_null_md5,-rsa_null_sha,+rsa_rc4_128_md5</pre>
+
 <hr>
 <ul>
 <li>NSSProxyNickname</li>
 </ul>
 <p>The nickname of the client certificate to send if the remote server requests client authentication.</p>
 <p>Example</p>
-<p><pre>NSSProxyNickname beta</pre></p>
+<pre>NSSProxyNickname beta</pre>
+
 <hr>
 <ul>
 <li>NSSProxyCheckPeerCN</li>
 </ul>
 <p>Compare the CN value of the peer certificate with the hostname being requested. If this is set to on, the default, then the request will fail if they do not match. If this is set to off then this comparison is not done. Note that this test is your only protection against a man-in-the-middle attack so leaving this as on is strongly recommended.</p>
 <p>Example</p>
-<p><pre>NSSProxyCheckPeerCN on</pre></p>
+<pre>NSSProxyCheckPeerCN on</pre>
+
 <hr>
 <h2>Environment Variables</h2>
 <p>Quite a few environment variables (for CGI and SSI) may be set depending on the NSSOptions configuration. It can be expensive to set these so it is recommended that they only be set when they will be used (e.g. don't set them on a per-server basis). Here is a list of the variables along with the option used to set them.</p>
@@ -1146,7 +1187,7 @@ certutil: certificate is valid</pre>
   </div>
   <div class="tag-cloud">
     <p>
-      <a href="/tag/mod-nss.html">mod-nss</a>
+      <a href="https://akasurde.github.io/tag/mod-nss.html">mod-nss</a>
     </p>
   </div>
 <div id="disqus_thread"></div>
@@ -1162,21 +1203,8 @@ certutil: certificate is valid</pre>
 </article>
 
     <footer>
-<p>
-  &copy; Abhijeet Kasurde 2020 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
-</p>
-<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p><p>
-  <a rel="license"
-     href="http://creativecommons.org/licenses/by-sa/4.0/"
-     target="_blank">
-    <img alt="Creative Commons License"
-         title="Creative Commons License"
-         style="border-width:0"
-         src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
-         width="80"
-         height="15"/>
-  </a>
-</p>    </footer>
+        <p>&copy; Abhijeet Kasurde 2022</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
   </main>
 
 <!-- Google Analytics -->
@@ -1204,10 +1232,10 @@ certutil: certificate is valid</pre>
   "author": {
     "@type": "Person",
     "name": "Abhijeet Kasurde",
-    "url": "/author/abhijeet-kasurde.html"
+    "url": "https://akasurde.github.io/author/abhijeet-kasurde.html"
   },
   "image": "https://pbs.twimg.com/profile_images/598341193336954882/HHxz7Y7G.png",
-  "url": "/mod-nss-the-missing-manual.html",
+  "url": "https://akasurde.github.io/mod-nss-the-missing-manual.html",
   "description": "The missing manual - mod-nss"
 }
 </script></body>

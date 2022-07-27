@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://akasurde.github.io - epel, linux, rhel, centos</title><link href="https://akasurde.github.io/" rel="alternate"></link><link href="https://akasurde.github.io/feeds/epel-linux-rhel-centos.atom.xml" rel="self"></link><id>https://akasurde.github.io/</id><updated>2017-05-18T12:03:00+05:30</updated><subtitle>Developer, Hacker</subtitle><entry><title>How to enable EPEL repository in RHEL 7 and CentOS 7?</title><link href="https://akasurde.github.io/how-to-enable-epel-repo-centos-rhel-7.html" rel="alternate"></link><published>2017-05-18T12:03:00+05:30</published><updated>2017-05-18T12:03:00+05:30</updated><author><name>Abhijeet Kasurde</name></author><id>tag:akasurde.github.io,2017-05-18:/how-to-enable-epel-repo-centos-rhel-7.html</id><summary type="html">&lt;p&gt;How to enable EPEL repository in RHEL 7 and CentOS 7?&lt;/p&gt;</summary><content type="html">&lt;h1&gt;EPEL&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;For RHEL 7 and CentOS 7 (64 bit)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;$ rpm -ivh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-9.noarch.rpm
+&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;For RHEL 6 and CentOS 6 (64 bit)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;$ rpm -ivh  http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+&lt;/pre&gt;</content><category term="epel, linux, rhel, centos"></category><category term="epel"></category><category term="linux"></category><category term="package"></category><category term="rpm"></category></entry></feed>

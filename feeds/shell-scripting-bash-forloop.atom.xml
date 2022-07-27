@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>https://akasurde.github.io - Shell Scripting, Bash, forloop</title><link href="https://akasurde.github.io/" rel="alternate"></link><link href="https://akasurde.github.io/feeds/shell-scripting-bash-forloop.atom.xml" rel="self"></link><id>https://akasurde.github.io/</id><updated>2016-05-23T12:03:00+05:30</updated><subtitle>Developer, Hacker</subtitle><entry><title>Using IFS in Bash forloop</title><link href="https://akasurde.github.io/using-ifs-in-bash-for-loop.html" rel="alternate"></link><published>2016-05-23T12:03:00+05:30</published><updated>2016-05-23T12:03:00+05:30</updated><author><name>Abhijeet Kasurde</name></author><id>tag:akasurde.github.io,2016-05-23:/using-ifs-in-bash-for-loop.html</id><summary type="html">&lt;p&gt;Using IFS variable in Bash for loop&lt;/p&gt;</summary><content type="html">&lt;p&gt;While using for loop in Shell scripting, there are times when you want to use
+filenames or variables with spaces like&lt;/p&gt;
+&lt;pre&gt;
+$ firewall-cmd --list-rich-rule
+rule family="ipv4" source address="192.168.122.1" forward-port port="80" protocol="tcp" to-port="8188"
+
+$ for i in `firewall-cmd --list-rich-rule`; do echo $i ; done
+
+rule
+family="ipv4"
+source
+address="192.168.122.1"
+forward-port
+port="80"
+protocol="tcp"
+to-port="8188"
+&lt;/pre&gt;
+
+&lt;p&gt;But, you want whole command output in single variable. Then, IFS will come to your help. First, replace IFS environment variable to new line character.&lt;/p&gt;
+&lt;pre&gt;
+OLDIFS=$IFS
+IFS=$"\n"
+&lt;/pre&gt;
+
+&lt;p&gt;Notice that we are storing IFS in variable with &lt;code&gt;$"\n"&lt;/code&gt;. Read more about this &lt;a href="http://www.gnu.org/software/bash/manual/bash.html#ANSI_002dC-Quoting"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Now, script looks like this&lt;/p&gt;
+&lt;pre&gt;
+OLDIFS=$IFS
+IFS=$"\n";
+for i in `firewall-cmd --list-rich-rule`; do  echo $i ; done
+IFS=$OLDIFS
+&lt;/pre&gt;
+
+&lt;p&gt;And, you are done.&lt;/p&gt;
+&lt;p&gt;Output is something like this,&lt;/p&gt;
+&lt;pre&gt;
+rule family="ipv4" source address="192.168.122.1" forward-port port="80" protocol="tcp" to-port="8188"
+&lt;/pre&gt;</content><category term="Shell Scripting, Bash, forloop"></category><category term="shell"></category><category term="bash"></category><category term="scripting"></category><category term="for"></category></entry></feed>

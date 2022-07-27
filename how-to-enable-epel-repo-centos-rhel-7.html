@@ -3,12 +3,13 @@
 <head>
   <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+    <link rel="stylesheet" type="text/css" href="https://akasurde.github.io/theme/stylesheet/style.min.css">
 
-  <link rel="stylesheet" type="text/css" href="/theme/stylesheet/pygments.min.css">
-  <link rel="stylesheet" type="text/css" href="/theme/stylesheet/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://akasurde.github.io/theme/stylesheet/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="https://akasurde.github.io/theme/stylesheet/font-awesome.min.css">
 
 
+    <link href="https://akasurde.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="https://akasurde.github.io Atom">
 
 
 
@@ -19,40 +20,41 @@
 <meta name="author" content="Abhijeet Kasurde" />
 <meta name="description" content="How to enable EPEL repository in RHEL 7 and CentOS 7?" />
 <meta name="keywords" content="epel, linux, package, rpm">
-<meta property="og:site_name" content="http://akasurde.github.io"/>
+<meta property="og:site_name" content="https://akasurde.github.io"/>
 <meta property="og:title" content="How to enable EPEL repository in RHEL 7 and CentOS 7?"/>
 <meta property="og:description" content="How to enable EPEL repository in RHEL 7 and CentOS 7?"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="/how-to-enable-epel-repo-centos-rhel-7.html"/>
+<meta property="og:url" content="https://akasurde.github.io/how-to-enable-epel-repo-centos-rhel-7.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2017-05-18 12:03:00+05:30"/>
 <meta property="article:modified_time" content="2017-05-18 12:03:00+05:30"/>
-<meta property="article:author" content="/author/abhijeet-kasurde.html">
+<meta property="article:author" content="https://akasurde.github.io/author/abhijeet-kasurde.html">
 <meta property="article:section" content="epel, linux, rhel, centos"/>
 <meta property="article:tag" content="epel"/>
 <meta property="article:tag" content="linux"/>
 <meta property="article:tag" content="package"/>
 <meta property="article:tag" content="rpm"/>
 <meta property="og:image" content="https://pbs.twimg.com/profile_images/598341193336954882/HHxz7Y7G.png">
-  <title>http://akasurde.github.io &ndash; How to enable EPEL repository in RHEL 7 and CentOS 7?</title>
+  <title>https://akasurde.github.io &ndash; How to enable EPEL repository in RHEL 7 and CentOS 7?</title>
 </head>
 <body>
   <aside>
     <div>
-      <a href="">
-        <img src="https://pbs.twimg.com/profile_images/598341193336954882/HHxz7Y7G.png" alt="Abhijeet Kasurde" title="Abhijeet Kasurde">
+      <a href="https://akasurde.github.io">
+        <img src="https://pbs.twimg.com/profile_images/598341193336954882/HHxz7Y7G.png" alt="" title="">
       </a>
-      <h1><a href="">Abhijeet Kasurde</a></h1>
+      <h1><a href="https://akasurde.github.io"></a></h1>
       <p>Developer, Hacker</p>
       <nav>
         <ul class="list">
           <li><a href="https://akasurde.github.io">Home</a></li>
-          <li><a href="/pages/about.html#about">About</a></li>
-          <li><a href="/pages/contact.html#contact">Contact</a></li>
-          <li><a href="/pages/good-reads.html#good-reads">Good Reads</a></li>
-          <li><a href="/pages/open-source-for-you.html#open-source-for-you">Open Source For You</a></li>
-          <li><a href="/pages/projects.html#projects">Projects</a></li>
-          <li><a href="/pages/slidedecks.html#slidedecks">Slide Deck</a></li>
+          <li><a href="https://akasurde.github.io/pages/about.html#about">About</a></li>
+          <li><a href="https://akasurde.github.io/pages/contact.html#contact">Contact</a></li>
+          <li><a href="https://akasurde.github.io/pages/good-reads.html#good-reads">Good Reads</a></li>
+          <li><a href="https://akasurde.github.io/pages/open-source-for-you.html#open-source-for-you">Open Source For You</a></li>
+          <li><a href="https://akasurde.github.io/pages/projects.html#projects">Projects</a></li>
+          <li><a href="https://akasurde.github.io/pages/slidedecks.html#slidedecks">Slide Deck</a></li>
+          <li><a href="http://opensourceforu.com/author/abhijeet-kasurde/" target="_blank">Open Source For You</a></li>
         </ul>
       </nav>
       <ul class="social">
@@ -68,29 +70,28 @@
 <article>
   <header>
     <h1 id="how-to-enable-epel-repo-centos-rhel-7">How to enable EPEL repository in RHEL 7 and CentOS 7?</h1>
-    <p>Posted on Thu 18 May 2017 in <a href="/category/epel-linux-rhel-centos.html">epel, linux, rhel, centos</a></p>
+    <p>Posted on Thu 18 May 2017 in <a href="https://akasurde.github.io/category/epel-linux-rhel-centos.html">epel, linux, rhel, centos</a></p>
   </header>
   <div>
     <h1>EPEL</h1>
 <ul>
-<li>
-<p>For RHEL 7 and CentOS 7 (64 bit)
-<pre>$ rpm -ivh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-9.noarch.rpm
-</pre></p>
-</li>
-<li>
-<p>For RHEL 6 and CentOS 6 (64 bit)
-<pre>$ rpm -ivh  http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-</pre></p>
-</li>
+<li>For RHEL 7 and CentOS 7 (64 bit)</li>
 </ul>
+<pre>$ rpm -ivh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-9.noarch.rpm
+</pre>
+
+<ul>
+<li>For RHEL 6 and CentOS 6 (64 bit)</li>
+</ul>
+<pre>$ rpm -ivh  http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+</pre>
   </div>
   <div class="tag-cloud">
     <p>
-      <a href="/tag/epel.html">epel</a>
-      <a href="/tag/linux.html">linux</a>
-      <a href="/tag/package.html">package</a>
-      <a href="/tag/rpm.html">rpm</a>
+      <a href="https://akasurde.github.io/tag/epel.html">epel</a>
+      <a href="https://akasurde.github.io/tag/linux.html">linux</a>
+      <a href="https://akasurde.github.io/tag/package.html">package</a>
+      <a href="https://akasurde.github.io/tag/rpm.html">rpm</a>
     </p>
   </div>
 <div id="disqus_thread"></div>
@@ -106,21 +107,8 @@
 </article>
 
     <footer>
-<p>
-  &copy; Abhijeet Kasurde 2020 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
-</p>
-<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p><p>
-  <a rel="license"
-     href="http://creativecommons.org/licenses/by-sa/4.0/"
-     target="_blank">
-    <img alt="Creative Commons License"
-         title="Creative Commons License"
-         style="border-width:0"
-         src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
-         width="80"
-         height="15"/>
-  </a>
-</p>    </footer>
+        <p>&copy; Abhijeet Kasurde 2022</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
   </main>
 
 <!-- Google Analytics -->
@@ -148,10 +136,10 @@
   "author": {
     "@type": "Person",
     "name": "Abhijeet Kasurde",
-    "url": "/author/abhijeet-kasurde.html"
+    "url": "https://akasurde.github.io/author/abhijeet-kasurde.html"
   },
   "image": "https://pbs.twimg.com/profile_images/598341193336954882/HHxz7Y7G.png",
-  "url": "/how-to-enable-epel-repo-centos-rhel-7.html",
+  "url": "https://akasurde.github.io/how-to-enable-epel-repo-centos-rhel-7.html",
   "description": "How to enable EPEL repository in RHEL 7 and CentOS 7?"
 }
 </script></body>
